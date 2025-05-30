@@ -1,6 +1,6 @@
 # Robodyno Webots 仿真模型
 
-![robodyno_webots](https://img.shields.io/badge/robodyno_webots-v2.1.0-aquamarine) [![Python](https://img.shields.io/pypi/pyversions/robodyno)](https://www.python.org/downloads/) [![webots_version](https://img.shields.io/badge/webots-2023b-orange)](https://cyberbotics.com/) [![robodyno_version](https://img.shields.io/badge/robodyno->=1.7.1-green)](https://pypi.org/project/robodyno/) [![github](https://img.shields.io/badge/github-v2.1.0-black)](https://pypi.org/project/robodyno/) [![gitee](https://img.shields.io/badge/gitee-v2.1.0-black)](https://pypi.org/project/robodyno/) [![](https://img.shields.io/badge/license-Apache-000000.svg)](http://www.apache.org/licenses/)
+![robodyno_webots](https://img.shields.io/badge/robodyno_webots-v2.1.0-aquamarine) [![Python](https://img.shields.io/pypi/pyversions/robodyno)](https://www.python.org/downloads/) [![webots_version](https://img.shields.io/badge/webots-2023b-orange)](https://cyberbotics.com/) [![robodyno_version](https://img.shields.io/badge/robodyno->=1.7.1-green)](https://pypi.org/project/robodyno/) [![github](https://img.shields.io/badge/github-v2.1.0-black)](https://github.com/awei-ryan/robodyno_webots.git) [![gitee](https://img.shields.io/badge/gitee-v2.1.0-black)](https://gitee.com/aweiryan/robodyno_webots.git) [![](https://img.shields.io/badge/license-Apache-000000.svg)](http://www.apache.org/licenses/)
 
 ## 安装
 
