@@ -1,0 +1,49 @@
+#VRML_SIM R2023b utf8
+# Robodyno的Delta机械臂的动平台末端连接件.
+# license: Creative Commons Attribution 4.0 International License.
+# license url: https://creativecommons.org/licenses/by/4.0/legalcode
+
+PROTO DeltaEnd [
+  field SFVec3f translation 0 0 0
+  field SFRotation rotation 0 0 1 0
+  field SFString name "DeltaEnd"
+  field MFNode   children     []
+]
+{
+  Solid {
+    translation IS translation
+    rotation IS rotation
+    name IS name
+    children [
+      Transform {
+        rotation 1 0 0 1.5708
+        children [
+          CadShape {
+            url [
+              "./shapes/DeltaEnd.dae"
+            ]
+            castShadows FALSE
+          }
+        ]
+      }
+      Pose {
+        translation 0 0 -0.001
+        rotation 0 1 0 3.14159
+        children IS children
+      }
+    ]
+    boundingObject Transform {
+      translation 0 0 -0.00125
+      children [
+        Cylinder {
+          height 0.0025
+          radius 0.03
+        }
+      ]
+    }
+    physics Physics {
+      density -1
+      mass 0.02
+    }
+  }
+}

@@ -1,0 +1,42 @@
+#VRML_SIM R2023b utf8
+# 机械臂场景大底板.
+# license: Creative Commons Attribution 4.0 International License.
+# license url: https://creativecommons.org/licenses/by/4.0/legalcode
+
+PROTO BaseBoard [
+  field SFVec3f translation 0 0 -0.01
+  field SFRotation rotation 0 0 1 0
+  field SFString name "BaseBoard"
+]
+{
+  Solid {
+    translation IS translation
+    rotation IS rotation
+    name IS name
+    children [
+      Transform {
+        rotation 1 0 0 1.57
+        children [
+          CadShape {
+            url [
+              "./shapes/BaseBoard.dae"
+            ]
+            castShadows FALSE
+          }
+        ]
+      }
+    ]
+    boundingObject Transform {
+      translation 0 0 0.005
+      children [
+        Box {
+          size 0.35 0.35 0.01
+        }
+      ]
+    }
+    physics Physics {
+      density -1
+      mass 1.5
+    }
+  }
+}

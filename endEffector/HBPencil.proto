@@ -1,0 +1,50 @@
+#VRML_SIM R2023b utf8
+# Robodyno的HB铅笔模型.
+# license: Creative Commons Attribution 4.0 International License.
+# license url: https://creativecommons.org/licenses/by/4.0/legalcode
+# documentation url: https://cyberbotics.com/doc/reference/pen?tab-language=python
+
+PROTO HBPencil [
+  field SFVec3f    translation 0 0 0
+  field SFRotation rotation 0 1 0 0
+  field SFString   name "pencil"
+  field SFColor    inkColor 1 0 0
+  field SFFloat    inkDensity 0.5
+  field SFFloat    leadSize 0.15
+  field SFFloat    maxDistance 0.0
+  field SFBool     write TRUE            
+  field SFBool     castShadows FALSE            
+]
+
+{
+  Pose {
+    translation IS translation
+    rotation IS rotation
+    children [
+      Pen {
+        translation 0 0 0.0892
+        rotation 0 1 0 3.14159
+        name IS name
+        children [
+          Pose {
+            translation -0.005 0 0.0893
+            rotation 0 1 0 0
+            children [
+              CadShape {
+                url [
+                  "./shapes/Pencil.dae"
+                ]
+                castShadows IS castShadows
+              }
+            ]
+          }
+        ]
+        inkColor IS inkColor
+        inkDensity IS inkDensity
+        leadSize IS leadSize
+        maxDistance IS maxDistance
+        write IS write
+      }
+    ]
+  }
+}

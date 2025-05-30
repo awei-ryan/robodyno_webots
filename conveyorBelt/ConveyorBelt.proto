@@ -1,0 +1,108 @@
+#VRML_SIM R2023b utf8
+# Robodyno传送带模型
+# 使用时需要添加传送带控制器
+# license: Creative Commons Attribution 4.0 International License.
+# license url: https://creativecommons.org/licenses/by/4.0/legalcode
+# documentation url: https://cyberbotics.com/doc/reference/track
+
+PROTO ConveyorBelt [
+  field SFVec3f         translation           0 0 0.04
+  field SFRotation      rotation              1 0 0 1.57
+  field SFString        name                  "conveyor_belt"
+  field SFString        motor_id              "0x22"
+  field SFString        controller            ""
+]
+
+{
+	Robot {
+		translation IS translation
+		rotation IS rotation
+		name IS name
+		children [
+            Track {
+                translation -0.015 0 0.05
+                rotation 1 0 0 1.5708
+                name "belt"
+                children [
+                    TrackWheel {
+                        position -0.355 0
+                        radius 0.025
+                    }
+                    TrackWheel {
+                        position 0.374 0
+                        radius 0.025
+                    }
+                ]
+                boundingObject Group {
+                    children [
+                        Transform {
+                            translation 0.0095 0 0
+                            rotation 1 0 0 1.5708
+                            children [
+                                Box {
+                                    size 0.729 0.054 0.1
+                                }
+                            ]
+                        }
+                        Transform {
+                            translation -0.355 0 0
+                            rotation 1 0 0 1.5708
+                            children [
+                                Cylinder {
+                                    height 0.1
+                                    radius 0.025
+                                }
+                            ]
+                        }
+                        Transform {
+                            translation 0.374 0 0
+                            rotation 1 0 0 1.5708
+                            children [
+                                Cylinder {
+                                    height 0.1
+                                    radius 0.025
+                                }
+                            ]
+                        }
+                    ]
+                }
+                physics Physics {
+                }
+                device [
+                    LinearMotor {
+                        name IS motor_id
+                    }
+                ]
+                animatedGeometry Transform {
+                    children [
+                        Shape {
+                            appearance PBRAppearance {
+                                baseColor 0.08 0.45 0.1
+                                roughness 1
+                                metalness 0
+                            }
+                            geometry Box {
+                                size 0.005 0.1 0.002 
+                            }
+                            castShadows FALSE
+                        }
+                    ]
+                }
+                geometriesCount 340
+            }
+            Solid {
+                rotation -1 0 0 1.5707964
+                name "belt_base"
+                children [
+                    CadShape {
+                        url [
+                        "shapes/chuansongdai.dae"
+                        ]
+                        castShadows FALSE
+                    }
+                ]
+            }
+        ]
+        controller IS controller
+	}
+}

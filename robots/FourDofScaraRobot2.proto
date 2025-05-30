@@ -1,0 +1,371 @@
+#VRML_SIM R2023b utf8
+# Robodyno的四自由度SCARA机械臂第二种构型的模型.
+# 可选任选85mm, 125mm, 150mm三种臂长.
+# license: Creative Commons Attribution 4.0 International License.
+# license url: https://creativecommons.org/licenses/by/4.0/legalcode
+# template language: javascript
+
+EXTERNPROTO "../joints/SliderModule.proto"
+EXTERNPROTO "../objects/TBracket.proto"
+EXTERNPROTO "../joints/Pro_JP44.proto"
+EXTERNPROTO "../objects/PipeConnector.proto"
+EXTERNPROTO "../objects/PipeLink85.proto"
+EXTERNPROTO "../objects/PipeLink125.proto"
+EXTERNPROTO "../objects/PipeLink150.proto"
+EXTERNPROTO "../objects/CylinderConnector.proto"
+EXTERNPROTO "../joints/Pro_JP12.proto"
+EXTERNPROTO "../objects/SliderBase.proto"
+
+PROTO FourDofScaraRobot2 [
+  field SFVec3f translation 0 0 0
+  field SFRotation rotation 0 0 1 0
+  field SFString name "FourDofScaraRobot2"
+  field SFString firstJointId   "0x10"
+  field SFString secondJointId  "0x11"
+  field SFString thirdJointId   "0x12"
+  field SFString fourthJointId  "0x13"
+  field SFString{"PipeLink85", "PipeLink125", "PipeLink150"} upperarmType "PipeLink85" 
+  field SFString{"PipeLink85", "PipeLink125", "PipeLink150"} forearmType "PipeLink85" 
+  field MFNode   baseChildren    []
+  field MFNode   endChildren     []
+  field SFString controller       ""
+]
+
+{
+  Robot {
+    translation IS translation
+    rotation IS rotation
+    name IS name
+    children [
+      SliderBase {
+        translation 0 0 0.01
+        name %<= "\"SliderBase_1_" + fields.name.value + fields.firstJointId.value + "\"" >%
+      }
+      Pose {
+        children IS baseChildren
+      }
+      SliderModule {
+        translation 0 -0.003 0.018
+        motor_id IS firstJointId
+        children [
+          TBracket {
+            name %<= "\"TBracket_1_" + fields.name.value + fields.secondJointId.value + "\"" >%
+          }
+          Pro_JP44 {
+            translation 0 -0.046 0.03
+            rotation 0.5773489358533613 0.5773489358533613 0.5773529358529169 -2.094395307179586
+            motor_id IS secondJointId
+            children [
+              TBracket {
+                rotation 0 0 1 1.5708
+                name %<= "\"TBracket_1_" + fields.name.value + fields.thirdJointId.value + "\"" >%
+              }
+              PipeConnector {
+                translation -0.015 0 0.03
+                rotation 0.5773509358554485 0.5773509358554485 0.5773489358556708 2.0944
+                name %<= "\"PipeConnector_1_" + fields.name.value + fields.thirdJointId.value + "\"" >%
+              }
+              %< if ( fields.upperarmType.value  == "PipeLink85") { >%
+                PipeLink85 {
+                  translation 0.0325 0 0.03
+                  rotation 0 1 0 1.5708
+                  name %<= "\"PipeLink85_1_" + fields.name.value + fields.thirdJointId.value + "\"" >%
+                }
+                CylinderConnector {
+                  translation 0.11 0 0.03
+                  rotation 0 1 0 1.5708
+                  name %<= "\"CylinderConnector_1_" + fields.name.value + fields.thirdJointId.value + "\"" >%
+                }
+                TBracket {
+                  translation 0.12 0 0.03
+                  rotation 0.5773509358554485 0.5773509358554485 0.5773489358556708 2.0944
+                  name %<= "\"TBracket_2_" + fields.name.value + fields.thirdJointId.value + "\"" >%
+                }
+                Pro_JP44 {
+                  translation 0.15 0 -0.016
+                  motor_id IS thirdJointId
+                  children [
+                    TBracket {
+                      rotation 0 0 1 -1.5707953071795862
+                      name %<= "\"TBracket_1_" + fields.name.value + fields.fourthJointId.value + "\"" >%
+                    }
+                    PipeConnector {
+                      translation -0.015 0 0.03
+                      rotation 0.5773509358554485 0.5773509358554485 0.5773489358556708 2.0944
+                      name %<= "\"PipeConnector_1_" + fields.name.value + fields.fourthJointId.value + "\"" >%
+                    }
+                    %< if ( fields.forearmType.value  == "PipeLink85") { >%
+                      PipeLink85 {
+                        translation 0.0325 0 0.03
+                        rotation 0 1 0 1.5708
+                        name %<= "\"PipeLink85_1_" + fields.name.value + fields.fourthJointId.value + "\"" >%
+                      }
+                      CylinderConnector {
+                        translation 0.11 0 0.03
+                        rotation 0 1 0 1.5708
+                        name %<= "\"CylinderConnector_1_" + fields.name.value + fields.fourthJointId.value + "\"" >%
+                      }
+                      TBracket {
+                        translation 0.12 0 0.03
+                        rotation 0.5773509358554485 0.5773509358554485 0.5773489358556708 2.0944
+                        name %<= "\"TBracket_2_" + fields.name.value + fields.fourthJointId.value + "\"" >%
+                      }
+                      Pro_JP12 {
+                        translation 0.15 0 0.076
+                        rotation 0 1 0 3.14159
+                        motor_id IS fourthJointId
+                        children IS endChildren
+                      }
+                    %< } else if (fields.forearmType.value == "PipeLink125") { >%
+                      PipeLink125 {
+                        translation 0.0325 -0.0025 0.03
+                        rotation 0 1 0 1.5708
+                        name %<= "\"PipeLink125_1_" + fields.name.value + fields.fourthJointId.value + "\"" >%
+                      }
+                      CylinderConnector {
+                        translation 0.15 0 0.03
+                        rotation 0 1 0 1.5708
+                        name %<= "\"CylinderConnector_1_" + fields.name.value + fields.fourthJointId.value + "\"" >%
+                      }
+                      TBracket {
+                        translation 0.16 0 0.03
+                        rotation 0.5773509358554485 0.5773509358554485 0.5773489358556708 2.0944
+                        name %<= "\"TBracket_2_" + fields.name.value + fields.fourthJointId.value + "\"" >%
+                      }
+                      Pro_JP12 {
+                        translation 0.19 0 0.076
+                        rotation 0 1 0 3.14159
+                        motor_id IS fourthJointId
+                        children IS endChildren
+                      }
+                    %< } else if (fields.forearmType.value == "PipeLink150") { >%
+                      PipeLink150 {
+                        translation 0.0325 0 0.03
+                        rotation 0 1 0 1.5708
+                        name %<= "\"PipeLink150_1_" + fields.name.value + fields.fourthJointId.value + "\"" >%
+                      }
+                      CylinderConnector {
+                        translation 0.175 0 0.03
+                        rotation 0 1 0 1.5708
+                        name %<= "\"CylinderConnector_1_" + fields.name.value + fields.fourthJointId.value + "\"" >%
+                      }
+                      TBracket {
+                        translation 0.185 0 0.03
+                        rotation 0.5773509358554485 0.5773509358554485 0.5773489358556708 2.0944
+                        name %<= "\"TBracket_2_" + fields.name.value + fields.fourthJointId.value + "\"" >%
+                      }
+                      Pro_JP12 {
+                        translation 0.215 0 0.076
+                        rotation 0 1 0 3.14159
+                        motor_id IS fourthJointId
+                        children IS endChildren
+                      }
+                    %< } >%
+                  ]
+                }
+              %< } else if (fields.upperarmType.value == "PipeLink125") { >%
+                PipeLink125 {
+                  translation 0.0325 -0.0025 0.03
+                  rotation 0 1 0 1.5708
+                  name %<= "\"PipeLink125_1_" + fields.name.value + fields.thirdJointId.value + "\"" >%
+                }
+                CylinderConnector {
+                  translation 0.15 0 0.03
+                  rotation 0 1 0 1.5708
+                  name %<= "\"CylinderConnector_1_" + fields.name.value + fields.thirdJointId.value + "\"" >%
+                }
+                TBracket {
+                  translation 0.16 0 0.03
+                  rotation 0.5773509358554485 0.5773509358554485 0.5773489358556708 2.0944
+                  name %<= "\"TBracket_2_" + fields.name.value + fields.thirdJointId.value + "\"" >%
+                }
+                Pro_JP44 {
+                  translation 0.19 0 -0.016
+                  motor_id IS thirdJointId
+                  children [
+                    TBracket {
+                      rotation 0 0 1 -1.5707953071795862
+                      name %<= "\"TBracket_1_" + fields.name.value + fields.fourthJointId.value + "\"" >%
+                    }
+                    PipeConnector {
+                      translation -0.015 0 0.03
+                      rotation 0.5773509358554485 0.5773509358554485 0.5773489358556708 2.0944
+                      name %<= "\"PipeConnector_1_" + fields.name.value + fields.fourthJointId.value + "\"" >%
+                    }
+
+                    %< if ( fields.forearmType.value  == "PipeLink85") { >%
+                      PipeLink85 {
+                        translation 0.0325 0 0.03
+                        rotation 0 1 0 1.5708
+                        name %<= "\"PipeLink85_1_" + fields.name.value + fields.fourthJointId.value + "\"" >%
+                      }
+                      CylinderConnector {
+                        translation 0.11 0 0.03
+                        rotation 0 1 0 1.5708
+                        name %<= "\"CylinderConnector_1_" + fields.name.value + fields.fourthJointId.value + "\"" >%
+                      }
+                      TBracket {
+                        translation 0.12 0 0.03
+                        rotation 0.5773509358554485 0.5773509358554485 0.5773489358556708 2.0944
+                        name %<= "\"TBracket_2_" + fields.name.value + fields.fourthJointId.value + "\"" >%
+                      }
+                      Pro_JP12 {
+                        translation 0.15 0 0.076
+                        rotation 0 1 0 3.14159
+                        motor_id IS fourthJointId
+                        children IS endChildren
+                      }
+                    %< } else if (fields.forearmType.value == "PipeLink125") { >%
+                      PipeLink125 {
+                        translation 0.0325 -0.0025 0.03
+                        rotation 0 1 0 1.5708
+                        name %<= "\"PipeLink125_1_" + fields.name.value + fields.fourthJointId.value + "\"" >%
+                      }
+                      CylinderConnector {
+                        translation 0.15 0 0.03
+                        rotation 0 1 0 1.5708
+                        name %<= "\"CylinderConnector_1_" + fields.name.value + fields.fourthJointId.value + "\"" >%
+                      }
+                      TBracket {
+                        translation 0.16 0 0.03
+                        rotation 0.5773509358554485 0.5773509358554485 0.5773489358556708 2.0944
+                        name %<= "\"TBracket_2_" + fields.name.value + fields.fourthJointId.value + "\"" >%
+                      }
+                      Pro_JP12 {
+                        translation 0.19 0 0.076
+                        rotation 0 1 0 3.14159
+                        motor_id IS fourthJointId
+                        children IS endChildren
+                      }
+                    %< } else if (fields.forearmType.value == "PipeLink150") { >%
+                      PipeLink150 {
+                        translation 0.0325 0 0.03
+                        rotation 0 1 0 1.5708
+                        name %<= "\"PipeLink150_1_" + fields.name.value + fields.fourthJointId.value + "\"" >%
+                      }
+                      CylinderConnector {
+                        translation 0.175 0 0.03
+                        rotation 0 1 0 1.5708
+                        name %<= "\"CylinderConnector_1_" + fields.name.value + fields.fourthJointId.value + "\"" >%
+                      }
+                      TBracket {
+                        translation 0.185 0 0.03
+                        rotation 0.5773509358554485 0.5773509358554485 0.5773489358556708 2.0944
+                        name %<= "\"TBracket_2_" + fields.name.value + fields.fourthJointId.value + "\"" >%
+                      }
+                      Pro_JP12 {
+                        translation 0.215 0 0.076
+                        rotation 0 1 0 3.14159
+                        motor_id IS fourthJointId
+                        children IS endChildren
+                      }
+                    %< } >%
+                  ]
+                }
+              %< } else if (fields.upperarmType.value == "PipeLink150") { >%
+                PipeLink150 {
+                  translation 0.0325 0 0.03
+                  rotation 0 1 0 1.5708
+                  name %<= "\"PipeLink150_1_" + fields.name.value + fields.thirdJointId.value + "\"" >%
+                }
+                CylinderConnector {
+                  translation 0.175 0 0.03
+                  rotation 0 1 0 1.5708
+                  name %<= "\"CylinderConnector_1_" + fields.name.value + fields.thirdJointId.value + "\"" >%
+                }
+                TBracket {
+                  translation 0.185 0 0.03
+                  rotation 0.5773509358554485 0.5773509358554485 0.5773489358556708 2.0944
+                  name %<= "\"TBracket_2_" + fields.name.value + fields.thirdJointId.value + "\"" >%
+                }
+                Pro_JP44 {
+                  translation 0.215 0 -0.016
+                  motor_id IS thirdJointId
+                  children [
+                    TBracket {
+                      rotation 0 0 1 -1.5707953071795862
+                      name %<= "\"TBracket_1_" + fields.name.value + fields.fourthJointId.value + "\"" >%
+                    }
+                    PipeConnector {
+                      translation -0.015 0 0.03
+                      rotation 0.5773509358554485 0.5773509358554485 0.5773489358556708 2.0944
+                      name %<= "\"PipeConnector_1_" + fields.name.value + fields.fourthJointId.value + "\"" >%
+                    }
+                    %< if ( fields.forearmType.value  == "PipeLink85") { >%
+                      PipeLink85 {
+                        translation 0.0325 0 0.03
+                        rotation 0 1 0 1.5708
+                        name %<= "\"PipeLink85_1_" + fields.name.value + fields.fourthJointId.value + "\"" >%
+                      }
+                      CylinderConnector {
+                        translation 0.11 0 0.03
+                        rotation 0 1 0 1.5708
+                        name %<= "\"CylinderConnector_1_" + fields.name.value + fields.fourthJointId.value + "\"" >%
+                      }
+                      TBracket {
+                        translation 0.12 0 0.03
+                        rotation 0.5773509358554485 0.5773509358554485 0.5773489358556708 2.0944
+                        name %<= "\"TBracket_2_" + fields.name.value + fields.fourthJointId.value + "\"" >%
+                      }
+                      Pro_JP12 {
+                        translation 0.15 0 0.076
+                        rotation 0 1 0 3.14159
+                        motor_id IS fourthJointId
+                        children IS endChildren
+                      }
+                    %< } else if (fields.forearmType.value == "PipeLink125") { >%
+                      PipeLink125 {
+                        translation 0.0325 -0.0025 0.03
+                        rotation 0 1 0 1.5708
+                        name %<= "\"PipeLink125_1_" + fields.name.value + fields.fourthJointId.value + "\"" >%
+                      }
+                      CylinderConnector {
+                        translation 0.15 0 0.03
+                        rotation 0 1 0 1.5708
+                        name %<= "\"CylinderConnector_1_" + fields.name.value + fields.fourthJointId.value + "\"" >%
+                      }
+                      TBracket {
+                        translation 0.16 0 0.03
+                        rotation 0.5773509358554485 0.5773509358554485 0.5773489358556708 2.0944
+                        name %<= "\"TBracket_2_" + fields.name.value + fields.fourthJointId.value + "\"" >%
+                      }
+                      Pro_JP12 {
+                        translation 0.19 0 0.076
+                        rotation 0 1 0 3.14159
+                        motor_id IS fourthJointId
+                        children IS endChildren
+                      }
+                    %< } else if (fields.forearmType.value == "PipeLink150") { >%
+                      PipeLink150 {
+                        translation 0.0325 0 0.03
+                        rotation 0 1 0 1.5708
+                        name %<= "\"PipeLink150_1_" + fields.name.value + fields.fourthJointId.value + "\"" >%
+                      }
+                      CylinderConnector {
+                        translation 0.175 0 0.03
+                        rotation 0 1 0 1.5708
+                        name %<= "\"CylinderConnector_1_" + fields.name.value + fields.fourthJointId.value + "\"" >%
+                      }
+                      TBracket {
+                        translation 0.185 0 0.03
+                        rotation 0.5773509358554485 0.5773509358554485 0.5773489358556708 2.0944
+                        name %<= "\"TBracket_2_" + fields.name.value + fields.fourthJointId.value + "\"" >%
+                      }
+                      Pro_JP12 {
+                        translation 0.215 0 0.076
+                        rotation 0 1 0 3.14159
+                        motor_id IS fourthJointId
+                        children IS endChildren
+                      }
+                    %< } >%
+                  ]
+                }
+              %< } >%
+            ]
+          }
+        ]
+      }
+    ]
+    controller IS controller
+  }
+}

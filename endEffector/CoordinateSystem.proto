@@ -1,0 +1,32 @@
+#VRML_SIM R2023b utf8
+# Robodyno的坐标系模型.
+# license: Creative Commons Attribution 4.0 International License.
+# license url: https://creativecommons.org/licenses/by/4.0/legalcode
+
+PROTO CoordinateSystem [
+  field SFVec3f    translation 0 0 0
+  field SFRotation rotation 0 0 1 1.57
+  field SFString   name "coordinate"
+  field SFBool     castShadows FALSE            
+]
+
+{
+  Solid {
+    translation IS translation
+    rotation IS rotation
+    name IS name
+    children [
+      Transform {
+        scale 0.13 0.13 0.13
+        children [
+          CadShape {
+            url [
+              "./shapes/Coordinate.dae"
+            ]
+            castShadows IS castShadows
+          }
+        ]
+      }
+    ]
+  }
+}

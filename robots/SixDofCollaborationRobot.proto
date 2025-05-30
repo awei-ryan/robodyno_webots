@@ -1,0 +1,230 @@
+#VRML_SIM R2023b utf8
+# Robodyno的六自由度协作机械臂模型.
+# 可设置任意臂长，默认0.085m.
+# license: Creative Commons Attribution 4.0 International License.
+# license url: https://creativecommons.org/licenses/by/4.0/legalcode
+# template language: javascript
+
+EXTERNPROTO "../joints/Pro_JP44.proto"
+EXTERNPROTO "../objects/TBracket.proto"
+EXTERNPROTO "../objects/CylinderConnector.proto"
+EXTERNPROTO "../objects/BaseBoard.proto"
+EXTERNPROTO "../objects/ArmBase.proto"
+EXTERNPROTO "../objects/PipeConnector.proto"
+EXTERNPROTO "../joints/Pro_JP12.proto"
+
+PROTO SixDofCollaborationRobot [
+  field SFVec3f translation 0 0 0
+  field SFRotation rotation 1 0 0 0
+  field SFString name "SixDofCollaborationRobot"
+  field SFString firstJointId   "0x10"
+  field SFString secondJointId  "0x11"
+  field SFString thirdJointId   "0x12"
+  field SFString fourthJointId  "0x13"
+  field SFString fifthJointId   "0x14"
+  field SFString sixthJointId   "0x15"
+  field SFFloat  upperarmLength  0.085
+  field SFFloat  forearmLength   0.085
+  field MFNode   baseChildren    []
+  field MFNode   endChildren     []
+  field SFString controller     ""
+]
+
+{
+  Robot {
+    translation IS translation
+    rotation IS rotation
+    children [
+      Pose {
+        translation 0.0 -0.12 0.075
+        rotation 0 0 1 -1.57
+        children [
+          Pro_JP44 {
+            rotation 0 1 0 -1.5707953071795862
+            motor_id IS secondJointId
+            position -1.924524483677729e-06
+            children [
+              TBracket {
+                rotation 0 0 1 1.5708
+                name %<= "\"TBracket_1_" + fields.name.value + fields.firstJointId.value + "\"" >%
+              }
+              Pro_JP44 {
+                translation 0.046 0 0.03
+                rotation 0 1 0 -1.5707953071795862
+                motor_id IS firstJointId
+                position 0
+                children [
+                  Pose {
+                    translation 0 0 0.02
+                    rotation 0.707 0.707 0 -3.14159
+                    children IS baseChildren
+                  }
+                  ArmBase {
+                    translation 0 0 0.02
+                    rotation 1 0 0 3.14159
+                    name %<= "\"ArmBase_1_" + fields.name.value + fields.firstJointId.value + "\"" >%
+                  }
+                ]
+              }
+            ]
+          }
+          TBracket {
+            translation -0.046 0 0.03
+            rotation 0.7071067811862364 -0.7071067811862364 9.381857096790023e-07 3.14159
+            name %<= "\"TBracket_1_" + fields.name.value + fields.secondJointId.value + "\"" >%
+          }
+          CylinderConnector {
+            translation -0.046 0 0.03
+            name %<= "\"CylinderConnector_1_" + fields.name.value + fields.secondJointId.value + "\"" >%
+          }
+          Solid {
+            translation -0.046 0 0.0325
+            children [
+              Pose {
+                translation 0 0 %<= fields.upperarmLength.value / 2 >%
+                children [
+                  Shape {
+                    appearance Appearance {
+                      material Material {
+                      }
+                    }
+                    geometry Cylinder {
+                      height IS upperarmLength
+                      radius 0.02
+                    }
+                    castShadows FALSE
+                  }
+                ]
+              }
+            ]
+            name %<= "\"PipeLink85_1_" + fields.name.value + fields.secondJointId.value + "\"" >%
+            boundingObject Pose {
+              translation 0 0 %<= fields.upperarmLength.value / 2 >%
+              children [
+                Cylinder {
+                  height IS upperarmLength
+                  radius 0.02
+                }
+              ]
+            }
+            physics Physics {
+            }
+          }
+          CylinderConnector {
+            translation -0.046 0 %<= fields.upperarmLength.value - 0.085 + 0.11 >%
+            name %<= "\"CylinderConnector_2_" + fields.name.value + fields.secondJointId.value + "\"" >%
+          }
+          TBracket {
+            translation -0.046 0 %<= fields.upperarmLength.value - 0.085 + 0.12 >%
+            rotation 0 0 1 -1.5707953071795862
+            name %<= "\"TBracket_1_" + fields.name.value + fields.thirdJointId.value + "\"" >%
+          }
+          Pro_JP44 {
+            translation 0 0 %<= fields.upperarmLength.value - 0.085 + 0.15 >%
+            rotation 0 1 0 -1.5707953071795862
+            motor_id IS thirdJointId
+            position 1.1406918518673585e-06
+            children [
+              TBracket {
+                rotation 0 0 1 1.5708
+                name %<= "\"TBracket_1_" + fields.name.value + fields.fourthJointId.value + "\"" >%
+              }
+              PipeConnector {
+                translation -0.015 0 0.03
+                rotation 0.5773509358554485 0.5773509358554485 0.5773489358556708 2.0944
+                name %<= "\"PipeConnector_1_" + fields.name.value + fields.thirdJointId.value + "\"" >%
+              }
+              Solid {
+                translation 0.0325 0 0.03
+                rotation 0 1 0 1.5708
+                children [
+                  Pose {
+                    translation 0 0 %<= fields.forearmLength.value / 2 >%
+                    children [
+                      Shape {
+                        appearance Appearance {
+                          material Material {
+                          }
+                        }
+                        geometry Cylinder {
+                          height IS forearmLength
+                          radius 0.02
+                        }
+                        castShadows FALSE
+                      }
+                    ]
+                  }
+                ]
+                name %<= "\"PipeLink85_1_" + fields.name.value + fields.thirdJointId.value + "\"" >%
+                boundingObject Pose {
+                  translation 0 0 %<= fields.forearmLength.value / 2 >%
+                  children [
+                    Cylinder {
+                      height IS forearmLength
+                      radius 0.02
+                    }
+                  ]
+                }
+                physics Physics {
+                }
+              }
+              CylinderConnector {
+                translation %<= fields.forearmLength.value - 0.085 + 0.11 >% 0 0.03
+                rotation 0 1 0 1.5708
+                name %<= "\"CylinderConnector_1_" + fields.name.value + fields.thirdJointId.value + "\"" >%
+              }
+              TBracket {
+                translation %<= fields.forearmLength.value - 0.085 + 0.12 >% 0 0.03
+                rotation 0.5773509358554485 0.5773509358554485 0.5773489358556708 2.0944
+                name %<= "\"TBracket_2_" + fields.name.value + fields.fourthJointId.value + "\"" >%
+              }
+              Pro_JP44 {
+                translation %<= fields.forearmLength.value - 0.085 + 0.15 >% 0 0.076
+                rotation 0 1 0 3.14159
+                motor_id IS fourthJointId
+                position -5.087032587173537e-06
+                children [
+                  TBracket {
+                    rotation 0 0 1 -1.5707953071795862
+                    name %<= "\"TBracket_1_" + fields.name.value + fields.fifthJointId.value + "\"" >%
+                  }
+                  Pro_JP12 {
+                    translation 0.046 0 0.03
+                    rotation 0 1 0 -1.5707953071795862
+                    motor_id IS fifthJointId
+                    position 1.43248645068657e-06
+                    children [
+                      TBracket {
+                        rotation 0 0 1 1.5708
+                        name %<= "\"TBracket_1_" + fields.name.value + fields.sixthJointId.value + "\"" >%
+                      }
+                      Pro_JP12 {
+                        translation -0.046 0 0.03
+                        rotation 0 1 0 1.5708
+                        motor_id IS sixthJointId
+                        position -2.252685968908458e-06
+                        children IS endChildren
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+    name IS name
+    boundingObject Pose {
+      translation 0.0 0 0.0
+      rotation 0 1 0 0
+      children [
+      ]
+    }
+    physics Physics {
+      density -1
+      mass 0.36
+    }
+    controller IS controller
+  }
+}

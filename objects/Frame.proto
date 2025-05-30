@@ -1,0 +1,116 @@
+#VRML_SIM R2023b utf8
+# Robodyno的Delta机械臂的支撑框架.
+# license: Creative Commons Attribution 4.0 International License.
+# license url: https://creativecommons.org/licenses/by/4.0/legalcode
+
+PROTO Frame [
+  field SFVec3f translation 0 0 0
+  field SFRotation rotation 0 0 1 0
+  field SFString name "Frame"
+]
+{
+  Solid {
+    translation IS translation
+    rotation IS rotation
+    name IS name
+    children [
+      Solid {
+        translation 0 0 0.1
+        name "middleFrame"
+        children [
+          Transform {
+            rotation 1 0 0 1.5708
+            children [
+              CadShape {
+                url [
+                  "./shapes/Frame.dae"
+                ]
+                castShadows FALSE
+              }
+            ]
+          }
+        ]
+        boundingObject Group {
+          children [
+            Transform {
+              translation 0 0.275 0.26
+              children [
+                Box {
+                  size 0.26 0.04 0.52
+                }
+              ]
+            }
+            Transform {
+              translation 0 -0.275 0.26
+              children [
+                Box {
+                  size 0.26 0.04 0.52
+                }
+              ]
+            }
+          ]
+        }
+        physics Physics {
+          density -1
+          mass 20
+        }
+      }
+      Solid {
+        translation 0 0.275 0.05
+        children [
+          Shape {
+            appearance PBRAppearance {
+              baseColor 0 0 0
+              roughness 1
+              metalness 0
+            }
+            geometry Box {
+              size 0.26 0.04 0.1
+            }
+            castShadows FALSE
+          }
+        ]
+        name "leftFrame"
+        boundingObject Pose {
+          children [
+            Box {
+              size 0.26 0.04 0.1
+            }
+          ]
+        }
+        physics Physics {
+          density -1
+          mass 0.2
+        }
+      }
+      Solid {
+        translation 0 -0.275 0.05
+        children [
+          Shape {
+            appearance PBRAppearance {
+              baseColor 0 0 0
+              roughness 1
+              metalness 0
+            }
+            geometry Box {
+              size 0.26 0.04 0.1
+            }
+            castShadows FALSE
+          }
+        ]
+        name "rightFrame"
+        boundingObject Pose {
+          children [
+            Box {
+              size 0.26 0.04 0.1
+            }
+          ]
+        }
+        physics Physics {
+          density -1
+          mass 0.2
+        }
+      }
+    ]
+  }
+}

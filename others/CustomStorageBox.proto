@@ -1,0 +1,2337 @@
+#VRML_SIM R2023b utf8
+# Robodyno的场景自定义物料盒
+# license: Creative Commons Attribution 4.0 International License.
+# license url: https://creativecommons.org/licenses/by/4.0/legalcode
+# template language: javascript
+
+PROTO CustomStorageBox [
+  field SFVec3f    translation 0 0 0
+  field SFRotation rotation    1 0 0 0
+  field SFString   name        "custom storage box"
+  field SFColor    color       0.2 0.2 0.2
+  field SFString{"1", "2", "4", "6"}   box_number "4"
+  field SFBool     castShadows FALSE            
+  field SFNode     firstAppearance    PBRAppearance { baseColor 0.2 0.2 0.2 roughness 1 metalness 0}
+  field SFNode     secondAppearance   PBRAppearance { baseColor 0.2 0.2 0.2 roughness 1 metalness 0}
+  field SFNode     thirdAppearance    PBRAppearance { baseColor 0.2 0.2 0.2 roughness 1 metalness 0}
+  field SFNode     fourthAppearance   PBRAppearance { baseColor 0.2 0.2 0.2 roughness 1 metalness 0}
+  field SFNode     fifthAppearance    PBRAppearance { baseColor 0.2 0.2 0.2 roughness 1 metalness 0}
+  field SFNode     sixthAppearance    PBRAppearance { baseColor 0.2 0.2 0.2 roughness 1 metalness 0}
+]
+{
+    Pose {
+        translation IS translation
+        rotation IS rotation
+        children [
+         %< if (fields.box_number.value  == "1") { >%
+            Pose {
+                children [
+                    Solid {
+                        translation 0 0 0.001
+                        children [
+                            Pose {
+                                children [
+                                    Shape {
+                                    appearance IS firstAppearance
+                                    geometry Box {
+                                        size 0.1 0.1 0.002
+                                    }
+                                    castShadows IS castShadows
+                                    }
+                                ]
+                            }
+                            Pose {
+                                translation 0 -0.05 0.0395
+                                rotation 1 0 0 1.5708
+                                children [
+                                    Shape {
+                                    appearance PBRAppearance {
+                                        baseColor IS color
+                                        roughness 1
+                                        metalness 0
+                                    }
+                                    geometry Box {
+                                        size 0.102 0.081 0.002
+                                    }
+                                    castShadows IS castShadows
+                                    }
+                                ]
+                            }
+                            Pose {
+                                translation 0 0.05 0.0395
+                                rotation 1 0 0 1.5708
+                                children [
+                                    Shape {
+                                    appearance PBRAppearance {
+                                        baseColor IS color
+                                        roughness 1
+                                        metalness 0
+                                    }
+                                    geometry Box {
+                                        size 0.102 0.081 0.002
+                                    }
+                                    castShadows IS castShadows
+                                    }
+                                ]
+                            }
+                            Pose {
+                                translation 0.05 0 0.0395
+                                rotation 0 1 0 1.5708
+                                children [
+                                    Shape {
+                                    appearance PBRAppearance {
+                                        baseColor IS color
+                                        roughness 1
+                                        metalness 0
+                                    }
+                                    geometry Box {
+                                        size 0.081 0.102 0.002
+                                    }
+                                    castShadows IS castShadows
+                                    }
+                                ]
+                            }
+                            Pose {
+                                translation -0.05 0 0.0395
+                                rotation 0 1 0 1.5708
+                                children [
+                                    Shape {
+                                    appearance PBRAppearance {
+                                        baseColor IS color
+                                        roughness 1
+                                        metalness 0
+                                    }
+                                    geometry Box {
+                                        size 0.081 0.102 0.002
+                                    }
+                                    castShadows IS castShadows
+                                    }
+                                ]
+                            }
+                        ]
+                        name %<= "\"one_" + fields.name.value + "\"" >%
+                        boundingObject Group {
+                            children [
+                            Pose {
+                                children [
+                                    Shape {
+                                        appearance PBRAppearance {
+                                        baseColor IS color
+                                        roughness 1
+                                        metalness 0
+                                        }
+                                        geometry Box {
+                                        size 0.1 0.1 0.002
+                                        }
+                                        castShadows IS castShadows
+                                    }
+                                ]
+                            }
+                            Pose {
+                                translation 0 -0.05 0.0395
+                                rotation 1 0 0 1.5708
+                                children [
+                                    Shape {
+                                        appearance PBRAppearance {
+                                        baseColor IS color
+                                        roughness 1
+                                        metalness 0
+                                        }
+                                        geometry Box {
+                                        size 0.102 0.081 0.002
+                                        }
+                                        castShadows IS castShadows
+                                    }
+                                ]
+                            }
+                            Pose {
+                                translation 0 0.05 0.0395
+                                rotation 1 0 0 1.5708
+                                children [
+                                    Shape {
+                                        appearance PBRAppearance {
+                                        baseColor IS color
+                                        roughness 1
+                                        metalness 0
+                                        }
+                                        geometry Box {
+                                        size 0.102 0.081 0.002
+                                        }
+                                        castShadows IS castShadows
+                                    }
+                                ]
+                            }
+                            Pose {
+                                translation 0.05 0 0.0395
+                                rotation 0 1 0 1.5708
+                                children [
+                                    Shape {
+                                        appearance PBRAppearance {
+                                        baseColor IS color
+                                        roughness 1
+                                        metalness 0
+                                        }
+                                        geometry Box {
+                                        size 0.081 0.102 0.002
+                                        }
+                                        castShadows IS castShadows
+                                    }
+                                ]
+                            }
+                            Pose {
+                                translation -0.05 0 0.0395
+                                rotation 0 1 0 1.5708
+                                children [
+                                    Shape {
+                                        appearance PBRAppearance {
+                                        baseColor IS color
+                                        roughness 1
+                                        metalness 0
+                                        }
+                                        geometry Box {
+                                        size 0.081 0.102 0.002
+                                        }
+                                        castShadows IS castShadows
+                                    }
+                                ]
+                            }
+                            ]
+                        }
+                        physics Physics {
+                            density -1
+                            mass 0.01
+                        }
+                    }
+                ]
+            }   
+         %< } else if (fields.box_number.value == "2") { >%
+            Pose {
+                children [
+                    Solid {
+                    translation 0 0 0.001
+                    children [
+                        Pose {
+                        children [
+                            Shape {
+                            appearance IS firstAppearance
+                            geometry Box {
+                                size 0.1 0.1 0.002
+                            }
+                            castShadows IS castShadows
+                            }
+                        ]
+                        }
+                        Pose {
+                        translation 0 -0.05 0.0395
+                        rotation 1 0 0 1.5708
+                        children [
+                            Shape {
+                            appearance PBRAppearance {
+                                baseColor IS color
+                                roughness 1
+                                metalness 0
+                            }
+                            geometry Box {
+                                size 0.102 0.081 0.002
+                            }
+                            castShadows IS castShadows
+                            }
+                        ]
+                        }
+                        Pose {
+                        translation 0 0.05 0.0395
+                        rotation 1 0 0 1.5708
+                        children [
+                            Shape {
+                            appearance PBRAppearance {
+                                baseColor IS color
+                                roughness 1
+                                metalness 0
+                            }
+                            geometry Box {
+                                size 0.102 0.081 0.002
+                            }
+                            castShadows IS castShadows
+                            }
+                        ]
+                        }
+                        Pose {
+                        translation 0.05 0 0.0395
+                        rotation 0 1 0 1.5708
+                        children [
+                            Shape {
+                            appearance PBRAppearance {
+                                baseColor IS color
+                                roughness 1
+                                metalness 0
+                            }
+                            geometry Box {
+                                size 0.081 0.102 0.002
+                            }
+                            castShadows IS castShadows
+                            }
+                        ]
+                        }
+                        Pose {
+                        translation -0.05 0 0.0395
+                        rotation 0 1 0 1.5708
+                        children [
+                            Shape {
+                            appearance PBRAppearance {
+                                baseColor IS color
+                                roughness 1
+                                metalness 0
+                            }
+                            geometry Box {
+                                size 0.081 0.102 0.002
+                            }
+                            castShadows IS castShadows
+                            }
+                        ]
+                        }
+                    ]
+                    name %<= "\"one_" + fields.name.value + "\"" >%
+                    boundingObject Group {
+                        children [
+                        Pose {
+                            children [
+                            Shape {
+                                appearance PBRAppearance {
+                                baseColor IS color
+                                roughness 1
+                                metalness 0
+                                }
+                                geometry Box {
+                                size 0.1 0.1 0.002
+                                }
+                                castShadows IS castShadows
+                            }
+                            ]
+                        }
+                        Pose {
+                            translation 0 -0.05 0.0395
+                            rotation 1 0 0 1.5708
+                            children [
+                            Shape {
+                                appearance PBRAppearance {
+                                baseColor IS color
+                                roughness 1
+                                metalness 0
+                                }
+                                geometry Box {
+                                size 0.102 0.081 0.002
+                                }
+                                castShadows IS castShadows
+                            }
+                            ]
+                        }
+                        Pose {
+                            translation 0 0.05 0.0395
+                            rotation 1 0 0 1.5708
+                            children [
+                            Shape {
+                                appearance PBRAppearance {
+                                baseColor IS color
+                                roughness 1
+                                metalness 0
+                                }
+                                geometry Box {
+                                size 0.102 0.081 0.002
+                                }
+                                castShadows IS castShadows
+                            }
+                            ]
+                        }
+                        Pose {
+                            translation 0.05 0 0.0395
+                            rotation 0 1 0 1.5708
+                            children [
+                            Shape {
+                                appearance PBRAppearance {
+                                baseColor IS color
+                                roughness 1
+                                metalness 0
+                                }
+                                geometry Box {
+                                size 0.081 0.102 0.002
+                                }
+                                castShadows IS castShadows
+                            }
+                            ]
+                        }
+                        Pose {
+                            translation -0.05 0 0.0395
+                            rotation 0 1 0 1.5708
+                            children [
+                            Shape {
+                                appearance PBRAppearance {
+                                baseColor IS color
+                                roughness 1
+                                metalness 0
+                                }
+                                geometry Box {
+                                size 0.081 0.102 0.002
+                                }
+                                castShadows IS castShadows
+                            }
+                            ]
+                        }
+                        ]
+                    }
+                    physics Physics {
+                        density -1
+                        mass 0.01
+                    }
+                    }
+                    Solid {
+                    translation 0 -0.1 0.001
+                    children [
+                        Pose {
+                        children [
+                            Shape {
+                            appearance IS secondAppearance
+                            geometry Box {
+                                size 0.1 0.1 0.002
+                            }
+                            castShadows IS castShadows
+                            }
+                        ]
+                        }
+                        Pose {
+                        translation 0 -0.05 0.0395
+                        rotation 1 0 0 1.5708
+                        children [
+                            Shape {
+                            appearance PBRAppearance {
+                                baseColor IS color
+                                roughness 1
+                                metalness 0
+                            }
+                            geometry Box {
+                                size 0.102 0.081 0.002
+                            }
+                            castShadows IS castShadows
+                            }
+                        ]
+                        }
+                        Pose {
+                        translation 0 0.05 0.0395
+                        rotation 1 0 0 1.5708
+                        children [
+                            Shape {
+                            appearance PBRAppearance {
+                                baseColor IS color
+                                roughness 1
+                                metalness 0
+                            }
+                            geometry Box {
+                                size 0.102 0.081 0.002
+                            }
+                            castShadows IS castShadows
+                            }
+                        ]
+                        }
+                        Pose {
+                        translation 0.05 0 0.0395
+                        rotation 0 1 0 1.5708
+                        children [
+                            Shape {
+                            appearance PBRAppearance {
+                                baseColor IS color
+                                roughness 1
+                                metalness 0
+                            }
+                            geometry Box {
+                                size 0.081 0.102 0.002
+                            }
+                            castShadows IS castShadows
+                            }
+                        ]
+                        }
+                        Pose {
+                        translation -0.05 0 0.0395
+                        rotation 0 1 0 1.5708
+                        children [
+                            Shape {
+                            appearance PBRAppearance {
+                                baseColor IS color
+                                roughness 1
+                                metalness 0
+                            }
+                            geometry Box {
+                                size 0.081 0.102 0.002
+                            }
+                            castShadows IS castShadows
+                            }
+                        ]
+                        }
+                    ]
+                    name %<= "\"two_" + fields.name.value + "\"" >%
+                    boundingObject Group {
+                        children [
+                        Pose {
+                            children [
+                            Shape {
+                                appearance PBRAppearance {
+                                baseColor IS color
+                                roughness 1
+                                metalness 0
+                                }
+                                geometry Box {
+                                size 0.1 0.1 0.002
+                                }
+                                castShadows IS castShadows
+                            }
+                            ]
+                        }
+                        Pose {
+                            translation 0 -0.05 0.0395
+                            rotation 1 0 0 1.5708
+                            children [
+                            Shape {
+                                appearance PBRAppearance {
+                                baseColor IS color
+                                roughness 1
+                                metalness 0
+                                }
+                                geometry Box {
+                                size 0.102 0.081 0.002
+                                }
+                                castShadows IS castShadows
+                            }
+                            ]
+                        }
+                        Pose {
+                            translation 0 0.05 0.0395
+                            rotation 1 0 0 1.5708
+                            children [
+                            Shape {
+                                appearance PBRAppearance {
+                                baseColor IS color
+                                roughness 1
+                                metalness 0
+                                }
+                                geometry Box {
+                                size 0.102 0.081 0.002
+                                }
+                                castShadows IS castShadows
+                            }
+                            ]
+                        }
+                        Pose {
+                            translation 0.05 0 0.0395
+                            rotation 0 1 0 1.5708
+                            children [
+                            Shape {
+                                appearance PBRAppearance {
+                                baseColor IS color
+                                roughness 1
+                                metalness 0
+                                }
+                                geometry Box {
+                                size 0.081 0.102 0.002
+                                }
+                                castShadows IS castShadows
+                            }
+                            ]
+                        }
+                        Pose {
+                            translation -0.05 0 0.0395
+                            rotation 0 1 0 1.5708
+                            children [
+                            Shape {
+                                appearance PBRAppearance {
+                                baseColor IS color
+                                roughness 1
+                                metalness 0
+                                }
+                                geometry Box {
+                                size 0.081 0.102 0.002
+                                }
+                                castShadows IS castShadows
+                            }
+                            ]
+                        }
+                        ]
+                    }
+                    physics Physics {
+                        density -1
+                        mass 0.01
+                    }
+                    }
+                ]
+            }
+         %< } else if (fields.box_number.value == "4") { >%
+            Pose {
+                children [
+                    Solid {
+                    translation 0 0 0.001
+                    children [
+                        Pose {
+                        children [
+                            Shape {
+                            appearance IS firstAppearance
+                            geometry Box {
+                                size 0.1 0.1 0.002
+                            }
+                            castShadows IS castShadows
+                            }
+                        ]
+                        }
+                        Pose {
+                        translation 0 -0.05 0.0395
+                        rotation 1 0 0 1.5708
+                        children [
+                            Shape {
+                            appearance PBRAppearance {
+                                baseColor IS color
+                                roughness 1
+                                metalness 0
+                            }
+                            geometry Box {
+                                size 0.102 0.081 0.002
+                            }
+                            castShadows IS castShadows
+                            }
+                        ]
+                        }
+                        Pose {
+                        translation 0 0.05 0.0395
+                        rotation 1 0 0 1.5708
+                        children [
+                            Shape {
+                            appearance PBRAppearance {
+                                baseColor IS color
+                                roughness 1
+                                metalness 0
+                            }
+                            geometry Box {
+                                size 0.102 0.081 0.002
+                            }
+                            castShadows IS castShadows
+                            }
+                        ]
+                        }
+                        Pose {
+                        translation 0.05 0 0.0395
+                        rotation 0 1 0 1.5708
+                        children [
+                            Shape {
+                            appearance PBRAppearance {
+                                baseColor IS color
+                                roughness 1
+                                metalness 0
+                            }
+                            geometry Box {
+                                size 0.081 0.102 0.002
+                            }
+                            castShadows IS castShadows
+                            }
+                        ]
+                        }
+                        Pose {
+                        translation -0.05 0 0.0395
+                        rotation 0 1 0 1.5708
+                        children [
+                            Shape {
+                            appearance PBRAppearance {
+                                baseColor IS color
+                                roughness 1
+                                metalness 0
+                            }
+                            geometry Box {
+                                size 0.081 0.102 0.002
+                            }
+                            castShadows IS castShadows
+                            }
+                        ]
+                        }
+                    ]
+                    name %<= "\"one_" + fields.name.value + "\"" >%
+                    boundingObject Group {
+                        children [
+                        Pose {
+                            children [
+                            Shape {
+                                appearance PBRAppearance {
+                                baseColor IS color
+                                roughness 1
+                                metalness 0
+                                }
+                                geometry Box {
+                                size 0.1 0.1 0.002
+                                }
+                                castShadows IS castShadows
+                            }
+                            ]
+                        }
+                        Pose {
+                            translation 0 -0.05 0.0395
+                            rotation 1 0 0 1.5708
+                            children [
+                            Shape {
+                                appearance PBRAppearance {
+                                baseColor IS color
+                                roughness 1
+                                metalness 0
+                                }
+                                geometry Box {
+                                size 0.102 0.081 0.002
+                                }
+                                castShadows IS castShadows
+                            }
+                            ]
+                        }
+                        Pose {
+                            translation 0 0.05 0.0395
+                            rotation 1 0 0 1.5708
+                            children [
+                            Shape {
+                                appearance PBRAppearance {
+                                baseColor IS color
+                                roughness 1
+                                metalness 0
+                                }
+                                geometry Box {
+                                size 0.102 0.081 0.002
+                                }
+                                castShadows IS castShadows
+                            }
+                            ]
+                        }
+                        Pose {
+                            translation 0.05 0 0.0395
+                            rotation 0 1 0 1.5708
+                            children [
+                            Shape {
+                                appearance PBRAppearance {
+                                baseColor IS color
+                                roughness 1
+                                metalness 0
+                                }
+                                geometry Box {
+                                size 0.081 0.102 0.002
+                                }
+                                castShadows IS castShadows
+                            }
+                            ]
+                        }
+                        Pose {
+                            translation -0.05 0 0.0395
+                            rotation 0 1 0 1.5708
+                            children [
+                            Shape {
+                                appearance PBRAppearance {
+                                baseColor IS color
+                                roughness 1
+                                metalness 0
+                                }
+                                geometry Box {
+                                size 0.081 0.102 0.002
+                                }
+                                castShadows IS castShadows
+                            }
+                            ]
+                        }
+                        ]
+                    }
+                    physics Physics {
+                        density -1
+                        mass 0.01
+                    }
+                    }
+                    Solid {
+                    translation 0 -0.1 0.001
+                    children [
+                        Pose {
+                        children [
+                            Shape {
+                            appearance IS secondAppearance
+                            geometry Box {
+                                size 0.1 0.1 0.002
+                            }
+                            castShadows IS castShadows
+                            }
+                        ]
+                        }
+                        Pose {
+                        translation 0 -0.05 0.0395
+                        rotation 1 0 0 1.5708
+                        children [
+                            Shape {
+                            appearance PBRAppearance {
+                                baseColor IS color
+                                roughness 1
+                                metalness 0
+                            }
+                            geometry Box {
+                                size 0.102 0.081 0.002
+                            }
+                            castShadows IS castShadows
+                            }
+                        ]
+                        }
+                        Pose {
+                        translation 0 0.05 0.0395
+                        rotation 1 0 0 1.5708
+                        children [
+                            Shape {
+                            appearance PBRAppearance {
+                                baseColor IS color
+                                roughness 1
+                                metalness 0
+                            }
+                            geometry Box {
+                                size 0.102 0.081 0.002
+                            }
+                            castShadows IS castShadows
+                            }
+                        ]
+                        }
+                        Pose {
+                        translation 0.05 0 0.0395
+                        rotation 0 1 0 1.5708
+                        children [
+                            Shape {
+                            appearance PBRAppearance {
+                                baseColor IS color
+                                roughness 1
+                                metalness 0
+                            }
+                            geometry Box {
+                                size 0.081 0.102 0.002
+                            }
+                            castShadows IS castShadows
+                            }
+                        ]
+                        }
+                        Pose {
+                        translation -0.05 0 0.0395
+                        rotation 0 1 0 1.5708
+                        children [
+                            Shape {
+                            appearance PBRAppearance {
+                                baseColor IS color
+                                roughness 1
+                                metalness 0
+                            }
+                            geometry Box {
+                                size 0.081 0.102 0.002
+                            }
+                            castShadows IS castShadows
+                            }
+                        ]
+                        }
+                    ]
+                    name %<= "\"two_" + fields.name.value + "\"" >%
+                    boundingObject Group {
+                        children [
+                        Pose {
+                            children [
+                            Shape {
+                                appearance PBRAppearance {
+                                baseColor IS color
+                                roughness 1
+                                metalness 0
+                                }
+                                geometry Box {
+                                size 0.1 0.1 0.002
+                                }
+                                castShadows IS castShadows
+                            }
+                            ]
+                        }
+                        Pose {
+                            translation 0 -0.05 0.0395
+                            rotation 1 0 0 1.5708
+                            children [
+                            Shape {
+                                appearance PBRAppearance {
+                                baseColor IS color
+                                roughness 1
+                                metalness 0
+                                }
+                                geometry Box {
+                                size 0.102 0.081 0.002
+                                }
+                                castShadows IS castShadows
+                            }
+                            ]
+                        }
+                        Pose {
+                            translation 0 0.05 0.0395
+                            rotation 1 0 0 1.5708
+                            children [
+                            Shape {
+                                appearance PBRAppearance {
+                                baseColor IS color
+                                roughness 1
+                                metalness 0
+                                }
+                                geometry Box {
+                                size 0.102 0.081 0.002
+                                }
+                                castShadows IS castShadows
+                            }
+                            ]
+                        }
+                        Pose {
+                            translation 0.05 0 0.0395
+                            rotation 0 1 0 1.5708
+                            children [
+                            Shape {
+                                appearance PBRAppearance {
+                                baseColor IS color
+                                roughness 1
+                                metalness 0
+                                }
+                                geometry Box {
+                                size 0.081 0.102 0.002
+                                }
+                                castShadows IS castShadows
+                            }
+                            ]
+                        }
+                        Pose {
+                            translation -0.05 0 0.0395
+                            rotation 0 1 0 1.5708
+                            children [
+                            Shape {
+                                appearance PBRAppearance {
+                                baseColor IS color
+                                roughness 1
+                                metalness 0
+                                }
+                                geometry Box {
+                                size 0.081 0.102 0.002
+                                }
+                                castShadows IS castShadows
+                            }
+                            ]
+                        }
+                        ]
+                    }
+                    physics Physics {
+                        density -1
+                        mass 0.01
+                    }
+                    }
+                    Solid {
+                    translation -0.1 0 0.001
+                    children [
+                        Pose {
+                        children [
+                            Shape {
+                            appearance IS thirdAppearance
+                            geometry Box {
+                                size 0.1 0.1 0.002
+                            }
+                            castShadows IS castShadows
+                            }
+                        ]
+                        }
+                        Pose {
+                        translation 0 -0.05 0.0395
+                        rotation 1 0 0 1.5708
+                        children [
+                            Shape {
+                            appearance PBRAppearance {
+                                baseColor IS color
+                                roughness 1
+                                metalness 0
+                            }
+                            geometry Box {
+                                size 0.102 0.081 0.002
+                            }
+                            castShadows IS castShadows
+                            }
+                        ]
+                        }
+                        Pose {
+                        translation 0 0.05 0.0395
+                        rotation 1 0 0 1.5708
+                        children [
+                            Shape {
+                            appearance PBRAppearance {
+                                baseColor IS color
+                                roughness 1
+                                metalness 0
+                            }
+                            geometry Box {
+                                size 0.102 0.081 0.002
+                            }
+                            castShadows IS castShadows
+                            }
+                        ]
+                        }
+                        Pose {
+                        translation 0.05 0 0.0395
+                        rotation 0 1 0 1.5708
+                        children [
+                            Shape {
+                            appearance PBRAppearance {
+                                baseColor IS color
+                                roughness 1
+                                metalness 0
+                            }
+                            geometry Box {
+                                size 0.081 0.102 0.002
+                            }
+                            castShadows IS castShadows
+                            }
+                        ]
+                        }
+                        Pose {
+                        translation -0.05 0 0.0395
+                        rotation 0 1 0 1.5708
+                        children [
+                            Shape {
+                            appearance PBRAppearance {
+                                baseColor IS color
+                                roughness 1
+                                metalness 0
+                            }
+                            geometry Box {
+                                size 0.081 0.102 0.002
+                            }
+                            castShadows IS castShadows
+                            }
+                        ]
+                        }
+                    ]
+                    name %<= "\"three_" + fields.name.value + "\"" >%
+                    boundingObject Group {
+                        children [
+                        Pose {
+                            children [
+                            Shape {
+                                appearance PBRAppearance {
+                                baseColor IS color
+                                roughness 1
+                                metalness 0
+                                }
+                                geometry Box {
+                                size 0.1 0.1 0.002
+                                }
+                                castShadows IS castShadows
+                            }
+                            ]
+                        }
+                        Pose {
+                            translation 0 -0.05 0.0395
+                            rotation 1 0 0 1.5708
+                            children [
+                            Shape {
+                                appearance PBRAppearance {
+                                baseColor IS color
+                                roughness 1
+                                metalness 0
+                                }
+                                geometry Box {
+                                size 0.102 0.081 0.002
+                                }
+                                castShadows IS castShadows
+                            }
+                            ]
+                        }
+                        Pose {
+                            translation 0 0.05 0.0395
+                            rotation 1 0 0 1.5708
+                            children [
+                            Shape {
+                                appearance PBRAppearance {
+                                baseColor IS color
+                                roughness 1
+                                metalness 0
+                                }
+                                geometry Box {
+                                size 0.102 0.081 0.002
+                                }
+                                castShadows IS castShadows
+                            }
+                            ]
+                        }
+                        Pose {
+                            translation 0.05 0 0.0395
+                            rotation 0 1 0 1.5708
+                            children [
+                            Shape {
+                                appearance PBRAppearance {
+                                baseColor IS color
+                                roughness 1
+                                metalness 0
+                                }
+                                geometry Box {
+                                size 0.081 0.102 0.002
+                                }
+                                castShadows IS castShadows
+                            }
+                            ]
+                        }
+                        Pose {
+                            translation -0.05 0 0.0395
+                            rotation 0 1 0 1.5708
+                            children [
+                            Shape {
+                                appearance PBRAppearance {
+                                baseColor IS color
+                                roughness 1
+                                metalness 0
+                                }
+                                geometry Box {
+                                size 0.081 0.102 0.002
+                                }
+                                castShadows IS castShadows
+                            }
+                            ]
+                        }
+                        ]
+                    }
+                    physics Physics {
+                        density -1
+                        mass 0.01
+                    }
+                    }
+                    Solid {
+                    translation -0.1 -0.1 0.001
+                    children [
+                        Pose {
+                        children [
+                            Shape {
+                            appearance IS fourthAppearance
+                            geometry Box {
+                                size 0.1 0.1 0.002
+                            }
+                            castShadows IS castShadows
+                            }
+                        ]
+                        }
+                        Pose {
+                        translation 0 -0.05 0.0395
+                        rotation 1 0 0 1.5708
+                        children [
+                            Shape {
+                            appearance PBRAppearance {
+                                baseColor IS color
+                                roughness 1
+                                metalness 0
+                            }
+                            geometry Box {
+                                size 0.102 0.081 0.002
+                            }
+                            castShadows IS castShadows
+                            }
+                        ]
+                        }
+                        Pose {
+                        translation 0 0.05 0.0395
+                        rotation 1 0 0 1.5708
+                        children [
+                            Shape {
+                            appearance PBRAppearance {
+                                baseColor IS color
+                                roughness 1
+                                metalness 0
+                            }
+                            geometry Box {
+                                size 0.102 0.081 0.002
+                            }
+                            castShadows IS castShadows
+                            }
+                        ]
+                        }
+                        Pose {
+                        translation 0.05 0 0.0395
+                        rotation 0 1 0 1.5708
+                        children [
+                            Shape {
+                            appearance PBRAppearance {
+                                baseColor IS color
+                                roughness 1
+                                metalness 0
+                            }
+                            geometry Box {
+                                size 0.081 0.102 0.002
+                            }
+                            castShadows IS castShadows
+                            }
+                        ]
+                        }
+                        Pose {
+                        translation -0.05 0 0.0395
+                        rotation 0 1 0 1.5708
+                        children [
+                            Shape {
+                            appearance PBRAppearance {
+                                baseColor IS color
+                                roughness 1
+                                metalness 0
+                            }
+                            geometry Box {
+                                size 0.081 0.102 0.002
+                            }
+                            castShadows IS castShadows
+                            }
+                        ]
+                        }
+                    ]
+                    name %<= "\"four_" + fields.name.value + "\"" >%
+                    boundingObject Group {
+                        children [
+                        Pose {
+                            children [
+                            Shape {
+                                appearance PBRAppearance {
+                                baseColor IS color
+                                roughness 1
+                                metalness 0
+                                }
+                                geometry Box {
+                                size 0.1 0.1 0.002
+                                }
+                                castShadows IS castShadows
+                            }
+                            ]
+                        }
+                        Pose {
+                            translation 0 -0.05 0.0395
+                            rotation 1 0 0 1.5708
+                            children [
+                            Shape {
+                                appearance PBRAppearance {
+                                baseColor IS color
+                                roughness 1
+                                metalness 0
+                                }
+                                geometry Box {
+                                size 0.102 0.081 0.002
+                                }
+                                castShadows IS castShadows
+                            }
+                            ]
+                        }
+                        Pose {
+                            translation 0 0.05 0.0395
+                            rotation 1 0 0 1.5708
+                            children [
+                            Shape {
+                                appearance PBRAppearance {
+                                baseColor IS color
+                                roughness 1
+                                metalness 0
+                                }
+                                geometry Box {
+                                size 0.102 0.081 0.002
+                                }
+                                castShadows IS castShadows
+                            }
+                            ]
+                        }
+                        Pose {
+                            translation 0.05 0 0.0395
+                            rotation 0 1 0 1.5708
+                            children [
+                            Shape {
+                                appearance PBRAppearance {
+                                baseColor IS color
+                                roughness 1
+                                metalness 0
+                                }
+                                geometry Box {
+                                size 0.081 0.102 0.002
+                                }
+                                castShadows IS castShadows
+                            }
+                            ]
+                        }
+                        Pose {
+                            translation -0.05 0 0.0395
+                            rotation 0 1 0 1.5708
+                            children [
+                            Shape {
+                                appearance PBRAppearance {
+                                baseColor IS color
+                                roughness 1
+                                metalness 0
+                                }
+                                geometry Box {
+                                size 0.081 0.102 0.002
+                                }
+                                castShadows IS castShadows
+                            }
+                            ]
+                        }
+                        ]
+                    }
+                    physics Physics {
+                        density -1
+                        mass 0.01
+                    }
+                    }
+                ]
+            }
+         %< } else if (fields.box_number.value == "6") { >%
+            Pose {
+                children [
+                    Solid {
+                    translation 0 0 0.001
+                    children [
+                        Pose {
+                        children [
+                            Shape {
+                            appearance IS firstAppearance
+                            geometry Box {
+                                size 0.1 0.1 0.002
+                            }
+                            castShadows IS castShadows
+                            }
+                        ]
+                        }
+                        Pose {
+                        translation 0 -0.05 0.0395
+                        rotation 1 0 0 1.5708
+                        children [
+                            Shape {
+                            appearance PBRAppearance {
+                                baseColor IS color
+                                roughness 1
+                                metalness 0
+                            }
+                            geometry Box {
+                                size 0.102 0.081 0.002
+                            }
+                            castShadows IS castShadows
+                            }
+                        ]
+                        }
+                        Pose {
+                        translation 0 0.05 0.0395
+                        rotation 1 0 0 1.5708
+                        children [
+                            Shape {
+                            appearance PBRAppearance {
+                                baseColor IS color
+                                roughness 1
+                                metalness 0
+                            }
+                            geometry Box {
+                                size 0.102 0.081 0.002
+                            }
+                            castShadows IS castShadows
+                            }
+                        ]
+                        }
+                        Pose {
+                        translation 0.05 0 0.0395
+                        rotation 0 1 0 1.5708
+                        children [
+                            Shape {
+                            appearance PBRAppearance {
+                                baseColor IS color
+                                roughness 1
+                                metalness 0
+                            }
+                            geometry Box {
+                                size 0.081 0.102 0.002
+                            }
+                            castShadows IS castShadows
+                            }
+                        ]
+                        }
+                        Pose {
+                        translation -0.05 0 0.0395
+                        rotation 0 1 0 1.5708
+                        children [
+                            Shape {
+                            appearance PBRAppearance {
+                                baseColor IS color
+                                roughness 1
+                                metalness 0
+                            }
+                            geometry Box {
+                                size 0.081 0.102 0.002
+                            }
+                            castShadows IS castShadows
+                            }
+                        ]
+                        }
+                    ]
+                    name %<= "\"one_" + fields.name.value + "\"" >%
+                    boundingObject Group {
+                        children [
+                        Pose {
+                            children [
+                            Shape {
+                                appearance PBRAppearance {
+                                baseColor IS color
+                                roughness 1
+                                metalness 0
+                                }
+                                geometry Box {
+                                size 0.1 0.1 0.002
+                                }
+                                castShadows IS castShadows
+                            }
+                            ]
+                        }
+                        Pose {
+                            translation 0 -0.05 0.0395
+                            rotation 1 0 0 1.5708
+                            children [
+                            Shape {
+                                appearance PBRAppearance {
+                                baseColor IS color
+                                roughness 1
+                                metalness 0
+                                }
+                                geometry Box {
+                                size 0.102 0.081 0.002
+                                }
+                                castShadows IS castShadows
+                            }
+                            ]
+                        }
+                        Pose {
+                            translation 0 0.05 0.0395
+                            rotation 1 0 0 1.5708
+                            children [
+                            Shape {
+                                appearance PBRAppearance {
+                                baseColor IS color
+                                roughness 1
+                                metalness 0
+                                }
+                                geometry Box {
+                                size 0.102 0.081 0.002
+                                }
+                                castShadows IS castShadows
+                            }
+                            ]
+                        }
+                        Pose {
+                            translation 0.05 0 0.0395
+                            rotation 0 1 0 1.5708
+                            children [
+                            Shape {
+                                appearance PBRAppearance {
+                                baseColor IS color
+                                roughness 1
+                                metalness 0
+                                }
+                                geometry Box {
+                                size 0.081 0.102 0.002
+                                }
+                                castShadows IS castShadows
+                            }
+                            ]
+                        }
+                        Pose {
+                            translation -0.05 0 0.0395
+                            rotation 0 1 0 1.5708
+                            children [
+                            Shape {
+                                appearance PBRAppearance {
+                                baseColor IS color
+                                roughness 1
+                                metalness 0
+                                }
+                                geometry Box {
+                                size 0.081 0.102 0.002
+                                }
+                                castShadows IS castShadows
+                            }
+                            ]
+                        }
+                        ]
+                    }
+                    physics Physics {
+                        density -1
+                        mass 0.01
+                    }
+                    }
+                    Solid {
+                    translation 0 -0.1 0.001
+                    children [
+                        Pose {
+                        children [
+                            Shape {
+                            appearance IS secondAppearance
+                            geometry Box {
+                                size 0.1 0.1 0.002
+                            }
+                            castShadows IS castShadows
+                            }
+                        ]
+                        }
+                        Pose {
+                        translation 0 -0.05 0.0395
+                        rotation 1 0 0 1.5708
+                        children [
+                            Shape {
+                            appearance PBRAppearance {
+                                baseColor IS color
+                                roughness 1
+                                metalness 0
+                            }
+                            geometry Box {
+                                size 0.102 0.081 0.002
+                            }
+                            castShadows IS castShadows
+                            }
+                        ]
+                        }
+                        Pose {
+                        translation 0 0.05 0.0395
+                        rotation 1 0 0 1.5708
+                        children [
+                            Shape {
+                            appearance PBRAppearance {
+                                baseColor IS color
+                                roughness 1
+                                metalness 0
+                            }
+                            geometry Box {
+                                size 0.102 0.081 0.002
+                            }
+                            castShadows IS castShadows
+                            }
+                        ]
+                        }
+                        Pose {
+                        translation 0.05 0 0.0395
+                        rotation 0 1 0 1.5708
+                        children [
+                            Shape {
+                            appearance PBRAppearance {
+                                baseColor IS color
+                                roughness 1
+                                metalness 0
+                            }
+                            geometry Box {
+                                size 0.081 0.102 0.002
+                            }
+                            castShadows IS castShadows
+                            }
+                        ]
+                        }
+                        Pose {
+                        translation -0.05 0 0.0395
+                        rotation 0 1 0 1.5708
+                        children [
+                            Shape {
+                            appearance PBRAppearance {
+                                baseColor IS color
+                                roughness 1
+                                metalness 0
+                            }
+                            geometry Box {
+                                size 0.081 0.102 0.002
+                            }
+                            castShadows IS castShadows
+                            }
+                        ]
+                        }
+                    ]
+                    name %<= "\"two_" + fields.name.value + "\"" >%
+                    boundingObject Group {
+                        children [
+                        Pose {
+                            children [
+                            Shape {
+                                appearance PBRAppearance {
+                                baseColor IS color
+                                roughness 1
+                                metalness 0
+                                }
+                                geometry Box {
+                                size 0.1 0.1 0.002
+                                }
+                                castShadows IS castShadows
+                            }
+                            ]
+                        }
+                        Pose {
+                            translation 0 -0.05 0.0395
+                            rotation 1 0 0 1.5708
+                            children [
+                            Shape {
+                                appearance PBRAppearance {
+                                baseColor IS color
+                                roughness 1
+                                metalness 0
+                                }
+                                geometry Box {
+                                size 0.102 0.081 0.002
+                                }
+                                castShadows IS castShadows
+                            }
+                            ]
+                        }
+                        Pose {
+                            translation 0 0.05 0.0395
+                            rotation 1 0 0 1.5708
+                            children [
+                            Shape {
+                                appearance PBRAppearance {
+                                baseColor IS color
+                                roughness 1
+                                metalness 0
+                                }
+                                geometry Box {
+                                size 0.102 0.081 0.002
+                                }
+                                castShadows IS castShadows
+                            }
+                            ]
+                        }
+                        Pose {
+                            translation 0.05 0 0.0395
+                            rotation 0 1 0 1.5708
+                            children [
+                            Shape {
+                                appearance PBRAppearance {
+                                baseColor IS color
+                                roughness 1
+                                metalness 0
+                                }
+                                geometry Box {
+                                size 0.081 0.102 0.002
+                                }
+                                castShadows IS castShadows
+                            }
+                            ]
+                        }
+                        Pose {
+                            translation -0.05 0 0.0395
+                            rotation 0 1 0 1.5708
+                            children [
+                            Shape {
+                                appearance PBRAppearance {
+                                baseColor IS color
+                                roughness 1
+                                metalness 0
+                                }
+                                geometry Box {
+                                size 0.081 0.102 0.002
+                                }
+                                castShadows IS castShadows
+                            }
+                            ]
+                        }
+                        ]
+                    }
+                    physics Physics {
+                        density -1
+                        mass 0.01
+                    }
+                    }
+                    Solid {
+                    translation -0.1 0 0.001
+                    children [
+                        Pose {
+                        children [
+                            Shape {
+                            appearance IS thirdAppearance
+                            geometry Box {
+                                size 0.1 0.1 0.002
+                            }
+                            castShadows IS castShadows
+                            }
+                        ]
+                        }
+                        Pose {
+                        translation 0 -0.05 0.0395
+                        rotation 1 0 0 1.5708
+                        children [
+                            Shape {
+                            appearance PBRAppearance {
+                                baseColor IS color
+                                roughness 1
+                                metalness 0
+                            }
+                            geometry Box {
+                                size 0.102 0.081 0.002
+                            }
+                            castShadows IS castShadows
+                            }
+                        ]
+                        }
+                        Pose {
+                        translation 0 0.05 0.0395
+                        rotation 1 0 0 1.5708
+                        children [
+                            Shape {
+                            appearance PBRAppearance {
+                                baseColor IS color
+                                roughness 1
+                                metalness 0
+                            }
+                            geometry Box {
+                                size 0.102 0.081 0.002
+                            }
+                            castShadows IS castShadows
+                            }
+                        ]
+                        }
+                        Pose {
+                        translation 0.05 0 0.0395
+                        rotation 0 1 0 1.5708
+                        children [
+                            Shape {
+                            appearance PBRAppearance {
+                                baseColor IS color
+                                roughness 1
+                                metalness 0
+                            }
+                            geometry Box {
+                                size 0.081 0.102 0.002
+                            }
+                            castShadows IS castShadows
+                            }
+                        ]
+                        }
+                        Pose {
+                        translation -0.05 0 0.0395
+                        rotation 0 1 0 1.5708
+                        children [
+                            Shape {
+                            appearance PBRAppearance {
+                                baseColor IS color
+                                roughness 1
+                                metalness 0
+                            }
+                            geometry Box {
+                                size 0.081 0.102 0.002
+                            }
+                            castShadows IS castShadows
+                            }
+                        ]
+                        }
+                    ]
+                    name %<= "\"three_" + fields.name.value + "\"" >%
+                    boundingObject Group {
+                        children [
+                        Pose {
+                            children [
+                            Shape {
+                                appearance PBRAppearance {
+                                baseColor IS color
+                                roughness 1
+                                metalness 0
+                                }
+                                geometry Box {
+                                size 0.1 0.1 0.002
+                                }
+                                castShadows IS castShadows
+                            }
+                            ]
+                        }
+                        Pose {
+                            translation 0 -0.05 0.0395
+                            rotation 1 0 0 1.5708
+                            children [
+                            Shape {
+                                appearance PBRAppearance {
+                                baseColor IS color
+                                roughness 1
+                                metalness 0
+                                }
+                                geometry Box {
+                                size 0.102 0.081 0.002
+                                }
+                                castShadows IS castShadows
+                            }
+                            ]
+                        }
+                        Pose {
+                            translation 0 0.05 0.0395
+                            rotation 1 0 0 1.5708
+                            children [
+                            Shape {
+                                appearance PBRAppearance {
+                                baseColor IS color
+                                roughness 1
+                                metalness 0
+                                }
+                                geometry Box {
+                                size 0.102 0.081 0.002
+                                }
+                                castShadows IS castShadows
+                            }
+                            ]
+                        }
+                        Pose {
+                            translation 0.05 0 0.0395
+                            rotation 0 1 0 1.5708
+                            children [
+                            Shape {
+                                appearance PBRAppearance {
+                                baseColor IS color
+                                roughness 1
+                                metalness 0
+                                }
+                                geometry Box {
+                                size 0.081 0.102 0.002
+                                }
+                                castShadows IS castShadows
+                            }
+                            ]
+                        }
+                        Pose {
+                            translation -0.05 0 0.0395
+                            rotation 0 1 0 1.5708
+                            children [
+                            Shape {
+                                appearance PBRAppearance {
+                                baseColor IS color
+                                roughness 1
+                                metalness 0
+                                }
+                                geometry Box {
+                                size 0.081 0.102 0.002
+                                }
+                                castShadows IS castShadows
+                            }
+                            ]
+                        }
+                        ]
+                    }
+                    physics Physics {
+                        density -1
+                        mass 0.01
+                    }
+                    }
+                    Solid {
+                    translation -0.1 -0.1 0.001
+                    children [
+                        Pose {
+                        children [
+                            Shape {
+                            appearance IS fourthAppearance
+                            geometry Box {
+                                size 0.1 0.1 0.002
+                            }
+                            castShadows IS castShadows
+                            }
+                        ]
+                        }
+                        Pose {
+                        translation 0 -0.05 0.0395
+                        rotation 1 0 0 1.5708
+                        children [
+                            Shape {
+                            appearance PBRAppearance {
+                                baseColor IS color
+                                roughness 1
+                                metalness 0
+                            }
+                            geometry Box {
+                                size 0.102 0.081 0.002
+                            }
+                            castShadows IS castShadows
+                            }
+                        ]
+                        }
+                        Pose {
+                        translation 0 0.05 0.0395
+                        rotation 1 0 0 1.5708
+                        children [
+                            Shape {
+                            appearance PBRAppearance {
+                                baseColor IS color
+                                roughness 1
+                                metalness 0
+                            }
+                            geometry Box {
+                                size 0.102 0.081 0.002
+                            }
+                            castShadows IS castShadows
+                            }
+                        ]
+                        }
+                        Pose {
+                        translation 0.05 0 0.0395
+                        rotation 0 1 0 1.5708
+                        children [
+                            Shape {
+                            appearance PBRAppearance {
+                                baseColor IS color
+                                roughness 1
+                                metalness 0
+                            }
+                            geometry Box {
+                                size 0.081 0.102 0.002
+                            }
+                            castShadows IS castShadows
+                            }
+                        ]
+                        }
+                        Pose {
+                        translation -0.05 0 0.0395
+                        rotation 0 1 0 1.5708
+                        children [
+                            Shape {
+                            appearance PBRAppearance {
+                                baseColor IS color
+                                roughness 1
+                                metalness 0
+                            }
+                            geometry Box {
+                                size 0.081 0.102 0.002
+                            }
+                            castShadows IS castShadows
+                            }
+                        ]
+                        }
+                    ]
+                    name %<= "\"four_" + fields.name.value + "\"" >%
+                    boundingObject Group {
+                        children [
+                        Pose {
+                            children [
+                            Shape {
+                                appearance PBRAppearance {
+                                baseColor IS color
+                                roughness 1
+                                metalness 0
+                                }
+                                geometry Box {
+                                size 0.1 0.1 0.002
+                                }
+                                castShadows IS castShadows
+                            }
+                            ]
+                        }
+                        Pose {
+                            translation 0 -0.05 0.0395
+                            rotation 1 0 0 1.5708
+                            children [
+                            Shape {
+                                appearance PBRAppearance {
+                                baseColor IS color
+                                roughness 1
+                                metalness 0
+                                }
+                                geometry Box {
+                                size 0.102 0.081 0.002
+                                }
+                                castShadows IS castShadows
+                            }
+                            ]
+                        }
+                        Pose {
+                            translation 0 0.05 0.0395
+                            rotation 1 0 0 1.5708
+                            children [
+                            Shape {
+                                appearance PBRAppearance {
+                                baseColor IS color
+                                roughness 1
+                                metalness 0
+                                }
+                                geometry Box {
+                                size 0.102 0.081 0.002
+                                }
+                                castShadows IS castShadows
+                            }
+                            ]
+                        }
+                        Pose {
+                            translation 0.05 0 0.0395
+                            rotation 0 1 0 1.5708
+                            children [
+                            Shape {
+                                appearance PBRAppearance {
+                                baseColor IS color
+                                roughness 1
+                                metalness 0
+                                }
+                                geometry Box {
+                                size 0.081 0.102 0.002
+                                }
+                                castShadows IS castShadows
+                            }
+                            ]
+                        }
+                        Pose {
+                            translation -0.05 0 0.0395
+                            rotation 0 1 0 1.5708
+                            children [
+                            Shape {
+                                appearance PBRAppearance {
+                                baseColor IS color
+                                roughness 1
+                                metalness 0
+                                }
+                                geometry Box {
+                                size 0.081 0.102 0.002
+                                }
+                                castShadows IS castShadows
+                            }
+                            ]
+                        }
+                        ]
+                    }
+                    physics Physics {
+                        density -1
+                        mass 0.01
+                    }
+                    }
+                    Solid {
+                    translation -0.2 0 0.001
+                    children [
+                        Pose {
+                        children [
+                            Shape {
+                            appearance IS fifthAppearance
+                            geometry Box {
+                                size 0.1 0.1 0.002
+                            }
+                            castShadows IS castShadows
+                            }
+                        ]
+                        }
+                        Pose {
+                        translation 0 -0.05 0.0395
+                        rotation 1 0 0 1.5708
+                        children [
+                            Shape {
+                            appearance PBRAppearance {
+                                baseColor IS color
+                                roughness 1
+                                metalness 0
+                            }
+                            geometry Box {
+                                size 0.102 0.081 0.002
+                            }
+                            castShadows IS castShadows
+                            }
+                        ]
+                        }
+                        Pose {
+                        translation 0 0.05 0.0395
+                        rotation 1 0 0 1.5708
+                        children [
+                            Shape {
+                            appearance PBRAppearance {
+                                baseColor IS color
+                                roughness 1
+                                metalness 0
+                            }
+                            geometry Box {
+                                size 0.102 0.081 0.002
+                            }
+                            castShadows IS castShadows
+                            }
+                        ]
+                        }
+                        Pose {
+                        translation 0.05 0 0.0395
+                        rotation 0 1 0 1.5708
+                        children [
+                            Shape {
+                            appearance PBRAppearance {
+                                baseColor IS color
+                                roughness 1
+                                metalness 0
+                            }
+                            geometry Box {
+                                size 0.081 0.102 0.002
+                            }
+                            castShadows IS castShadows
+                            }
+                        ]
+                        }
+                        Pose {
+                        translation -0.05 0 0.0395
+                        rotation 0 1 0 1.5708
+                        children [
+                            Shape {
+                            appearance PBRAppearance {
+                                baseColor IS color
+                                roughness 1
+                                metalness 0
+                            }
+                            geometry Box {
+                                size 0.081 0.102 0.002
+                            }
+                            castShadows IS castShadows
+                            }
+                        ]
+                        }
+                    ]
+                    name %<= "\"five_" + fields.name.value + "\"" >%
+                    boundingObject Group {
+                        children [
+                        Pose {
+                            children [
+                            Shape {
+                                appearance PBRAppearance {
+                                baseColor IS color
+                                roughness 1
+                                metalness 0
+                                }
+                                geometry Box {
+                                size 0.1 0.1 0.002
+                                }
+                                castShadows IS castShadows
+                            }
+                            ]
+                        }
+                        Pose {
+                            translation 0 -0.05 0.0395
+                            rotation 1 0 0 1.5708
+                            children [
+                            Shape {
+                                appearance PBRAppearance {
+                                baseColor IS color
+                                roughness 1
+                                metalness 0
+                                }
+                                geometry Box {
+                                size 0.102 0.081 0.002
+                                }
+                                castShadows IS castShadows
+                            }
+                            ]
+                        }
+                        Pose {
+                            translation 0 0.05 0.0395
+                            rotation 1 0 0 1.5708
+                            children [
+                            Shape {
+                                appearance PBRAppearance {
+                                baseColor IS color
+                                roughness 1
+                                metalness 0
+                                }
+                                geometry Box {
+                                size 0.102 0.081 0.002
+                                }
+                                castShadows IS castShadows
+                            }
+                            ]
+                        }
+                        Pose {
+                            translation 0.05 0 0.0395
+                            rotation 0 1 0 1.5708
+                            children [
+                            Shape {
+                                appearance PBRAppearance {
+                                baseColor IS color
+                                roughness 1
+                                metalness 0
+                                }
+                                geometry Box {
+                                size 0.081 0.102 0.002
+                                }
+                                castShadows IS castShadows
+                            }
+                            ]
+                        }
+                        Pose {
+                            translation -0.05 0 0.0395
+                            rotation 0 1 0 1.5708
+                            children [
+                            Shape {
+                                appearance PBRAppearance {
+                                baseColor IS color
+                                roughness 1
+                                metalness 0
+                                }
+                                geometry Box {
+                                size 0.081 0.102 0.002
+                                }
+                                castShadows IS castShadows
+                            }
+                            ]
+                        }
+                        ]
+                    }
+                    physics Physics {
+                        density -1
+                        mass 0.01
+                    }
+                    }
+                    Solid {
+                    translation -0.2 -0.1 0.001
+                    children [
+                        Pose {
+                        children [
+                            Shape {
+                            appearance IS sixthAppearance
+                            geometry Box {
+                                size 0.1 0.1 0.002
+                            }
+                            castShadows IS castShadows
+                            }
+                        ]
+                        }
+                        Pose {
+                        translation 0 -0.05 0.0395
+                        rotation 1 0 0 1.5708
+                        children [
+                            Shape {
+                            appearance PBRAppearance {
+                                baseColor IS color
+                                roughness 1
+                                metalness 0
+                            }
+                            geometry Box {
+                                size 0.102 0.081 0.002
+                            }
+                            castShadows IS castShadows
+                            }
+                        ]
+                        }
+                        Pose {
+                        translation 0 0.05 0.0395
+                        rotation 1 0 0 1.5708
+                        children [
+                            Shape {
+                            appearance PBRAppearance {
+                                baseColor IS color
+                                roughness 1
+                                metalness 0
+                            }
+                            geometry Box {
+                                size 0.102 0.081 0.002
+                            }
+                            castShadows IS castShadows
+                            }
+                        ]
+                        }
+                        Pose {
+                        translation 0.05 0 0.0395
+                        rotation 0 1 0 1.5708
+                        children [
+                            Shape {
+                            appearance PBRAppearance {
+                                baseColor IS color
+                                roughness 1
+                                metalness 0
+                            }
+                            geometry Box {
+                                size 0.081 0.102 0.002
+                            }
+                            castShadows IS castShadows
+                            }
+                        ]
+                        }
+                        Pose {
+                        translation -0.05 0 0.0395
+                        rotation 0 1 0 1.5708
+                        children [
+                            Shape {
+                            appearance PBRAppearance {
+                                baseColor IS color
+                                roughness 1
+                                metalness 0
+                            }
+                            geometry Box {
+                                size 0.081 0.102 0.002
+                            }
+                            castShadows IS castShadows
+                            }
+                        ]
+                        }
+                    ]
+                    name %<= "\"six_" + fields.name.value + "\"" >%
+                    boundingObject Group {
+                        children [
+                        Pose {
+                            children [
+                            Shape {
+                                appearance PBRAppearance {
+                                baseColor IS color
+                                roughness 1
+                                metalness 0
+                                }
+                                geometry Box {
+                                size 0.1 0.1 0.002
+                                }
+                                castShadows IS castShadows
+                            }
+                            ]
+                        }
+                        Pose {
+                            translation 0 -0.05 0.0395
+                            rotation 1 0 0 1.5708
+                            children [
+                            Shape {
+                                appearance PBRAppearance {
+                                baseColor IS color
+                                roughness 1
+                                metalness 0
+                                }
+                                geometry Box {
+                                size 0.102 0.081 0.002
+                                }
+                                castShadows IS castShadows
+                            }
+                            ]
+                        }
+                        Pose {
+                            translation 0 0.05 0.0395
+                            rotation 1 0 0 1.5708
+                            children [
+                            Shape {
+                                appearance PBRAppearance {
+                                baseColor IS color
+                                roughness 1
+                                metalness 0
+                                }
+                                geometry Box {
+                                size 0.102 0.081 0.002
+                                }
+                                castShadows IS castShadows
+                            }
+                            ]
+                        }
+                        Pose {
+                            translation 0.05 0 0.0395
+                            rotation 0 1 0 1.5708
+                            children [
+                            Shape {
+                                appearance PBRAppearance {
+                                baseColor IS color
+                                roughness 1
+                                metalness 0
+                                }
+                                geometry Box {
+                                size 0.081 0.102 0.002
+                                }
+                                castShadows IS castShadows
+                            }
+                            ]
+                        }
+                        Pose {
+                            translation -0.05 0 0.0395
+                            rotation 0 1 0 1.5708
+                            children [
+                            Shape {
+                                appearance PBRAppearance {
+                                baseColor IS color
+                                roughness 1
+                                metalness 0
+                                }
+                                geometry Box {
+                                size 0.081 0.102 0.002
+                                }
+                                castShadows IS castShadows
+                            }
+                            ]
+                        }
+                        ]
+                    }
+                    physics Physics {
+                        density -1
+                        mass 0.01
+                    }
+                    }
+                ]
+            }
+         %< } >%
+        ]
+    }
+}

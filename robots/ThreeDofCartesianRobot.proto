@@ -1,0 +1,76 @@
+#VRML_SIM R2023b utf8
+# Robodyno的三自由度笛卡尔三轴机械臂模型.
+# license: Creative Commons Attribution 4.0 International License.
+# license url: https://creativecommons.org/licenses/by/4.0/legalcode
+# template language: javascript
+
+EXTERNPROTO "../objects/BaseBoard.proto"
+EXTERNPROTO "../joints/SliderModule.proto"
+EXTERNPROTO "../objects/SliderBase.proto"
+EXTERNPROTO "../objects/SliderBracket.proto"
+
+PROTO ThreeDofCartesianRobot [
+  field SFVec3f translation     0 0 0
+  field SFRotation rotation     0 0 1 0
+  field SFString name           "ThreeDofCartesianRobot"
+  field SFString firstJointId   "0x10"
+  field SFString secondJointId  "0x11"
+  field SFString thirdJointId   "0x12"
+  field SFFloat  xAxisinitPose  0.18   # [0.25, 0.045]
+  field SFFloat  yAxisinitPose  0.10   # [0.25, 0.045]
+  field SFFloat  zAxisinitPose  0.25   # [0.25, 0.045]
+  field MFNode   baseChildren   []
+  field MFNode   xAxisChildren  []
+  field MFNode   yAxisChildren  []
+  field SFString controller     ""
+]
+
+{
+  Robot {
+    translation IS translation
+    rotation IS rotation
+    name IS name
+    children [
+      Pose {
+        translation 0.175 0.1 0.049
+        children IS baseChildren
+      }
+      BaseBoard {
+        translation 0 0 0.00
+        name %<= "\"BaseBoard_1_" + fields.name.value + fields.firstJointId.value + "\"" >%
+      }
+      SliderModule {
+        translation 0.175 0.1 0.049
+        rotation 0 1 0 -1.57
+        motor_id IS firstJointId
+        initPose IS xAxisinitPose
+        children IS xAxisChildren
+      }
+      SliderBase {
+        translation -0.1 -0.1 0.01
+        name %<= "\"SliderBase_1_" + fields.name.value + fields.thirdJointId.value + "\"" >%
+      }
+      SliderModule {
+        translation -0.1 -0.097 0.018
+        motor_id IS thirdJointId
+        initPose IS zAxisinitPose
+        children [
+          SliderBracket {
+            name %<= "\"SliderBracket_1_" + fields.name.value + fields.secondJointId.value + "\"" >%
+          }
+          SliderModule {
+            translation 0.285 0 0.054
+            rotation 0 1 0 -1.5708
+            motor_id IS secondJointId
+            initPose IS yAxisinitPose
+            children IS yAxisChildren
+          }
+        ]
+      }
+    ]
+    controller IS controller
+  }
+}
+
+
+

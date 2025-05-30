@@ -1,0 +1,43 @@
+#VRML_SIM R2023b utf8
+# 机械臂关节电机的圆形底座.
+# license: Creative Commons Attribution 4.0 International License.
+# license url: https://creativecommons.org/licenses/by/4.0/legalcode
+
+PROTO ArmBase [
+  field SFVec3f translation 0 0 0
+  field SFRotation rotation 1 0 0 0
+  field SFString name "ArmBase"
+]
+{
+  Solid {
+    translation IS translation
+    rotation IS rotation
+    name IS name
+    children [
+      Transform {
+        rotation 1 0 0 1.5708
+        children [
+          CadShape {
+            url [
+              "./shapes/ArmBase.dae"
+            ]
+            castShadows FALSE
+          }
+        ]
+      }
+    ]
+    boundingObject Transform {
+      translation 0 0 0.01
+      children [
+        Cylinder {
+          height 0.02
+          radius 0.06
+        }
+      ]
+    }
+    physics Physics {
+      density -1
+      mass 2
+    }
+  }
+}

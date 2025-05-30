@@ -1,0 +1,42 @@
+#VRML_SIM R2023b utf8
+# Robodyno的Delta机械臂的大臂连接件.
+# license: Creative Commons Attribution 4.0 International License.
+# license url: https://creativecommons.org/licenses/by/4.0/legalcode
+
+PROTO DeltaArmLink [
+  field SFVec3f translation 0 0 0
+  field SFRotation rotation 0 0 1 0
+  field SFString name "DeltaArmLink"
+]
+{
+  Solid {
+    translation IS translation
+    rotation IS rotation
+    name IS name
+    children [
+      Transform {
+        rotation 1 0 0 1.5708
+        children [
+          CadShape {
+            url [
+              "./shapes/DeltaArmLink.dae"
+            ]
+            castShadows FALSE
+          }
+        ]
+      }
+    ]
+    boundingObject Transform {
+      translation 0 -0.05 0.005
+      children [
+        Box {
+          size 0.03 0.13 0.01
+        }
+      ]
+    }
+    physics Physics {
+      density -1
+      mass 0.05
+    }
+  }
+}

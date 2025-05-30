@@ -1,0 +1,43 @@
+#VRML_SIM R2023b utf8
+# Robodyno的Delta机械臂的静平台基座.
+# license: Creative Commons Attribution 4.0 International License.
+# license url: https://creativecommons.org/licenses/by/4.0/legalcode
+
+PROTO DeltaBase [
+  field SFVec3f translation 0 0 0
+  field SFRotation rotation 0 0 1 0
+  field SFString name "DeltaBase"
+]
+{
+  Solid {
+    translation IS translation
+    rotation IS rotation
+    name IS name
+    children [
+      Transform {
+        rotation 1 0 0 1.5708
+        children [
+          CadShape {
+            url [
+              "./shapes/DeltaBase.dae"
+            ]
+            castShadows FALSE
+          }
+        ]
+      }
+    ]
+    boundingObject Transform {
+      translation 0 0 -0.005
+      children [
+        Cylinder {
+          height 0.01
+          radius 0.1748
+        }
+      ]
+    }
+    physics Physics {
+      density -1
+      mass 1
+    }
+  }
+}

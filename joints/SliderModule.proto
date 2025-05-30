@@ -1,0 +1,110 @@
+#VRML_SIM R2023b utf8
+# Robodyno的直线模块模型.
+# 使用时需要修改motor_id.
+# documentation url: http://101.42.250.169/1.7.1/references/components/webots/slider_module
+# license: Creative Commons Attribution 4.0 International License.
+# license url: https://creativecommons.org/licenses/by/4.0/legalcode
+# template language: javascript
+
+EXTERNPROTO "../joints/Pro_JP44.proto"
+
+PROTO SliderModule [
+  field SFVec3f    translation 0 0 0
+  field SFRotation rotation    0 0 1 0
+  field SFString   motor_id    "0x10"
+  field SFFloat    initPose    0.25   # [0.25, 0.045]
+  field MFNode     children    []
+]
+
+{
+  Solid {
+    translation IS translation
+    rotation IS rotation
+    name %<= "\"Slider_Module_" + fields.motor_id.value + "\"" >%
+    children [
+      Transform {
+        rotation 0.577 0.577 0.577 2.09394
+        children [
+          CadShape {
+            url [
+              "shapes/Slider-Base.dae"
+            ]
+            castShadows FALSE
+          }
+          Pro_JP44 {
+            translation 0 0.42 0
+            rotation 1 0 0 1.5708
+            motor_id IS motor_id
+            children [
+              Solid {
+                translation 0 0 0.329
+                rotation 1 0 0 -1.5707953071795862
+                children [
+                  CadShape {
+                    url [
+                      "shapes/Slider-Rot.dae"
+                    ]
+                    castShadows FALSE
+                  }
+                ]
+              }
+            ]
+          }
+          SliderJoint {
+            jointParameters JointParameters {
+              axis 0 1 0
+            }
+            device [
+              LinearMotor {
+                name %<= "\"" + fields.motor_id.value + "::slider\"" >%
+                multiplier 0.0016
+                maxForce 1300
+              }
+            ]
+            
+            endPoint Solid {
+              translation 0 %<= fields.initPose.value - 0.245 >% 0
+              children [
+                CadShape {
+                  url [
+                    "shapes/Slider-Slide.dae"
+                  ]
+                  castShadows FALSE
+                }
+                Transform {
+                  translation 0 0.23414 0.025
+                  children IS children
+                }
+              ]
+              boundingObject Transform {
+                translation 0 0.23414 0.0045
+                children [
+                  Box {
+                    size 0.08 0.05 0.041
+                  }
+                ]
+              }
+              physics Physics {
+                density -1
+                mass 0.1
+              }
+            }
+          }
+        ]
+      }
+    ]
+    boundingObject Transform {
+      translation -0.011 0 0.1595
+      rotation 0 0 1 -1.5708
+      children [
+        Box {
+          size 0.08 0.056 0.319
+        }
+      ]
+    }
+    physics Physics {
+      density -1
+      mass 2
+    }
+  }
+}

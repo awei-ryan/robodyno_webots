@@ -1,0 +1,52 @@
+#VRML_SIM R2023b utf8
+# Robodyno的摄像头模型
+# 使用时需要添加摄像头控制器。
+# license: Creative Commons Attribution 4.0 International License.
+# license url: https://creativecommons.org/licenses/by/4.0/legalcode
+# documentation url: https://cyberbotics.com/doc/reference/camera?tab-language=python
+
+PROTO RobodynoCamera [
+  field SFVec3f    translation  0 0 0.6
+  field SFRotation rotation     -0.707 0.707 0 -3.1415
+  field SFString   name         "robodyno_camera"
+  field SFString   cameraId     "camera"
+  field SFInt32    width        640
+  field SFInt32    height       480
+  field SFBool     castShadows  FALSE
+  field SFString   controller   ""
+]
+{
+	Robot {
+		translation IS translation
+		rotation IS rotation
+		name IS name
+		children [
+      Pose {
+        rotation 0.577 -0.577 0.577 2.094
+        children [
+          Camera {
+            name IS cameraId
+            width IS width
+            height IS height
+            recognition Recognition {
+              frameThickness 2
+              segmentation TRUE
+            }
+          }
+          Pose {
+            translation  0.01 -0.011 0
+            children [
+              CadShape {
+                  url [
+                  "shapes/astra.dae"
+                  ]
+                  castShadows IS castShadows
+              }
+            ]
+          }
+        ]
+      }
+    ]
+        controller IS controller
+	}
+}

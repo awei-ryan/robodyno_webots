@@ -1,0 +1,67 @@
+#VRML_SIM R2023b utf8
+# license: Copyright Cyberbotics Ltd. Licensed for use only with Webots.
+# license url: https://cyberbotics.com/webots_assets_license
+# Robodyno的绘图板.
+# template language: javascript
+
+PROTO DrawingBoard [
+  field SFVec3f    translation 0 0 0.012
+  field SFRotation rotation    0 0 1 0
+  field SFString   name        "drawing board"
+  field SFColor    color       0.267 0.8 0.26
+  field SFBool     locked      FALSE            
+  field SFBool     castShadows FALSE            
+]
+{
+  Solid {
+    translation IS translation
+    rotation IS rotation
+    locked IS locked
+    name IS name
+    children [
+      Transform {
+        translation 0.0 -0.0015 -0.008
+        rotation 0 0 1 -1.57
+        scale 0.0112 0.008 1
+        children [
+          Shape {
+            appearance Appearance {
+              material Material {
+                diffuseColor IS color
+              }
+            }
+            geometry Box {
+              size 18.5 18 0.001
+            }
+            castShadows IS castShadows
+          }
+        ]
+      }
+      Transform {
+        rotation -0.577 0.577 -0.577 2.09
+        scale 0.2 0.2 0.2
+        children [
+          CadShape {
+            url [
+              "./shapes/MagneticDrawingBoard.dae"
+            ]
+            castShadows IS castShadows
+          }
+        ]
+      }
+    ]
+    boundingObject Pose {
+      translation -0.0015 -0.0025 -0.009
+      rotation 0 0 1 -1.57
+      children [
+        Box {
+          size 0.205 0.15 0.005
+        }
+      ]
+    }
+    physics Physics {
+      density -1
+      mass 0.1
+    }
+  }
+}

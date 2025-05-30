@@ -1,0 +1,76 @@
+#VRML_SIM R2023b utf8
+# Robodyno的真空气动夹持器模型.
+# 使用时需要修改 vacuum_id.
+# license: Creative Commons Attribution 4.0 International License.
+# license url: https://creativecommons.org/licenses/by/4.0/legalcode
+# documentation url: https://cyberbotics.com/doc/reference/vacuumgripper?tab-language=python
+
+PROTO Vacuum_Gripper [
+  field SFVec3f translation 0 0 0
+  field SFRotation rotation 0 0 1 0
+  field SFString name "vacuum_gripper"
+  field SFString vacuum_id "0x21"
+]
+
+{
+  Solid {
+    translation IS translation
+    rotation IS rotation
+    name IS name
+    children [
+      Pose {
+        children [
+          VacuumGripper {
+            children [
+              Pose {
+                rotation 0 0 1 1.5708
+                children [
+                  CadShape {
+                    url [
+                      "shapes/VacuumGripper.dae"
+                    ]
+                    castShadows FALSE
+                  }
+                ]
+              }
+            ]
+            name IS vacuum_id
+            boundingObject Group {
+              children [
+                Pose {
+                  translation 0 0 0.04
+                  children [
+                    Shape {
+                      geometry Cylinder {
+                        height 0.01
+                        radius 0.0175
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+            physics Physics {
+              density -1
+              mass 0.01
+            }
+            tensileStrength -1
+            shearStrength -1
+            contactPoints 1
+          }
+        ]
+      }
+    ]
+    boundingObject Pose {
+      translation 0 0 0.0053
+      children [
+        Cylinder {
+          height 0.03
+          radius 0.02
+        }
+      ]
+    }
+    physics Physics {
+    }
+  }
+}

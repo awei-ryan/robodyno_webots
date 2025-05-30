@@ -1,0 +1,45 @@
+#VRML_SIM R2023b utf8
+# 机械臂的臂管连接件.
+# 长度：150mm.
+# license: Creative Commons Attribution 4.0 International License.
+# license url: https://creativecommons.org/licenses/by/4.0/legalcode
+
+PROTO PipeLink150 [
+  field SFVec3f translation 0 0 0
+  field SFRotation rotation 0 0 1 0
+  field SFString name "PipeLink150"
+]
+{
+  Solid {
+    translation IS translation
+    rotation IS rotation
+    name IS name
+    children [
+      Transform {
+        children [
+          CadShape {
+            url [
+              "./shapes/PipeLink150.dae"
+            ]
+            castShadows FALSE
+          }
+        ]
+      }
+    ]
+    boundingObject Transform {
+      translation 0.0 0.0 0.075
+      children [
+        Cylinder {
+          bottom FALSE
+          height 0.150
+          radius 0.02
+          top FALSE
+        }
+      ]
+    }
+    physics Physics {
+      density -1
+      mass 0.03
+    }
+  }
+}

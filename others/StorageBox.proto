@@ -1,0 +1,104 @@
+#VRML_SIM R2023b utf8
+# Robodyno的场景物料盒
+# license: Creative Commons Attribution 4.0 International License.
+# license url: https://creativecommons.org/licenses/by/4.0/legalcode
+
+PROTO StorageBox [
+  field SFVec3f          translation          0 0 0
+  field SFRotation   rotation                 1 0 0 0
+  field SFString        name                  "storage box"
+]
+{
+	Solid {
+		translation IS translation
+		rotation IS rotation
+		name IS name
+		children [
+			Pose {
+			children [
+				DEF bin_box Shape {
+				castShadows FALSE
+				appearance PBRAppearance {
+					baseColor 0.2 0.2 0.2
+					roughness 1
+					metalness 0
+				}
+				geometry Mesh {
+					url [
+					"shapes/StorageBin.dae"
+					]
+				}
+				}
+			]
+			}
+		]
+		name "StorageBin"
+		boundingObject Group {
+			children [
+			Pose {
+				translation 0 0 0.001
+				children [
+				Box {
+					size 0.2 0.2 0.002
+				}
+				]
+			}
+			Pose {
+				translation 0 0.09925 0.04
+				children [
+				Box {
+					size 0.2 0.0015 0.08
+				}
+				]
+			}
+			Pose {
+				translation 0 -0.0993 0.04
+				children [
+				Box {
+					size 0.2 0.0015 0.08
+				}
+				]
+			}
+			Pose {
+				translation 0 0 0.04
+				children [
+				Box {
+					size 0.2 0.003 0.08
+				}
+				]
+			}
+			Pose {
+				translation 0 0 0.04
+				rotation 0 0 1 1.5708
+				children [
+				Box {
+					size 0.2 0.003 0.08
+				}
+				]
+			}
+			Pose {
+				translation -0.0993 0 0.04
+				rotation 0 0 1 1.5708
+				children [
+				Box {
+					size 0.2 0.0015 0.08
+				}
+				]
+			}
+			Pose {
+				translation 0.0993 0 0.04
+				rotation 0 0 1 1.5708
+				children [
+				Box {
+					size 0.2 0.0015 0.08
+				}
+				]
+			}
+			]
+		}
+		physics Physics {
+			density -1
+			mass 1
+		}
+	}
+}

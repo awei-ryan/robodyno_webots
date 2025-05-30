@@ -1,0 +1,42 @@
+#VRML_SIM R2023b utf8
+# Robodyno的直线模块的底座支架连接件.
+# license: Creative Commons Attribution 4.0 International License.
+# license url: https://creativecommons.org/licenses/by/4.0/legalcode
+
+PROTO SliderBase [
+  field SFVec3f translation 0 0 0
+  field SFRotation rotation 0 0 1 0
+  field SFString name "SliderBase"
+]
+{
+  Solid {
+    translation IS translation
+    rotation IS rotation
+    name IS name
+    children [
+      Transform {
+        rotation 1 0 0 1.5708
+        children [
+          CadShape {
+            url [
+              "./shapes/SliderBase.dae"
+            ]
+            castShadows FALSE
+          }
+        ]
+      }
+    ]
+    boundingObject Transform {
+      translation 0 0 0.004
+      children [
+        Box {
+          size 0.125 0.125 0.008
+        }
+      ]
+    }
+    physics Physics {
+      density -1
+      mass 5
+    }
+  }
+}
