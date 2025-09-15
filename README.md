@@ -1,6 +1,6 @@
 # Robodyno Webots 仿真模型
 
-![robodyno_webots](https://img.shields.io/badge/robodyno_webots-v2.1.0-aquamarine) [![Python](https://img.shields.io/pypi/pyversions/robodyno)](https://www.python.org/downloads/) [![webots_version](https://img.shields.io/badge/webots-2023b-orange)](https://cyberbotics.com/) [![robodyno_version](https://img.shields.io/badge/robodyno->=1.7.1-green)](https://pypi.org/project/robodyno/) [![github](https://img.shields.io/badge/github-v2.1.0-black)](https://github.com/awei-ryan/robodyno_webots.git) [![gitee](https://img.shields.io/badge/gitee-v2.1.0-black)](https://gitee.com/aweiryan/robodyno_webots.git) [![](https://img.shields.io/badge/license-Apache-000000.svg)](http://www.apache.org/licenses/)
+![robodyno_webots](https://img.shields.io/badge/robodyno_webots-v2.1.1-aquamarine) [![Python](https://img.shields.io/pypi/pyversions/robodyno)](https://www.python.org/downloads/) [![webots_version](https://img.shields.io/badge/webots->=2023b-orange)](https://cyberbotics.com/) [![robodyno_version](https://img.shields.io/badge/robodyno->=1.7.1-green)](https://pypi.org/project/robodyno/) [![github](https://img.shields.io/badge/github-v2.1.0-black)](https://github.com/awei-ryan/robodyno_webots.git) [![gitee](https://img.shields.io/badge/gitee-v2.1.0-black)](https://gitee.com/aweiryan/robodyno_webots.git) [![](https://img.shields.io/badge/license-Apache-000000.svg)](http://www.apache.org/licenses/)
 
 ## 安装
 
@@ -10,7 +10,7 @@ Webots 的安装请参考 [Webots 官方文档](https://cyberbotics.com/doc/guid
 
 ### Robodyno
 
-Robodyno 的软件包可以通过 pip 安装，建议使用 1.7.1 或者更新的版本。安装命令如下：
+Robodyno 的软件包可以通过 [pip 安装](http://101.42.250.169/1.7.1/start/installation/#pip)，建议使用 1.7.1 或者更新的版本。安装命令如下：
 
 ```bash
 pip install robodyno >= 1.7.1
@@ -299,14 +299,46 @@ PROTO SliderModule [
 ##### 机器人部件
 > 目录: `robodyno_webots/robots`
 
-###### FourDofScaraRobot
+###### FourDofScaraRobot1
 - Robodyno的四自由度Scara机器人(构型一).
 - 源自[Robot](https://cyberbotics.com/doc/reference/robot).
 
-![FourDofScaraRobot](./robots/icons/FourDofScaraRobot.png)
+![FourDofScaraRobot1](./robots/icons/FourDofScaraRobot1.png)
 
 ```
-PROTO FourDofScaraRobot [
+PROTO FourDofScaraRobot1 [
+  field SFVec3f    translation 0 0 0
+  field SFRotation rotation 0 0 1 0
+  field SFString   name "FourDofScaraRobot"
+  field SFString   firstJointId   "0x10"
+  field SFString   secondJointId  "0x11"
+  field SFString   thirdJointId   "0x12"
+  field SFString   fourthJointId  "0x13"
+  field SFFloat    sliderInitPose  0.25
+  field MFNode     baseChildren    []
+  field MFNode     endChildren     []
+  field SFString   controller       ""
+]
+```
+
+- **name**: 定义机械臂的名称.
+- **firstJointId**: 定义关节电机1的ID.默认`0x10`.
+- **secondJointId**: 定义关节电机2的ID.默认`0x11`.
+- **thirdJointId**: 定义关节电机3的ID.默认`0x12`.
+- **fourthJointId**: 定义关节电机4的ID.默认`0x13`.
+- **sliderInitPose**: 直线模块的初始位置.默认0.25m.
+- **baseChildren**: 添加基坐标子节点.
+- **endChildren**: 添加末端坐标子节点.
+- **controller**: 添加机器人控制器程序.
+
+###### FourDofScaraRobot2
+- Robodyno的四自由度Scara机器人(构型二).
+- 源自[Robot](https://cyberbotics.com/doc/reference/robot).
+
+![FourDofScaraRobot2](./robots/icons/FourDofScaraRobot2.png)
+
+```
+PROTO FourDofScaraRobot2 [
   field SFVec3f    translation 0 0 0
   field SFRotation rotation 0 0 1 0
   field SFString   name "FourDofScaraRobot"
@@ -335,14 +367,14 @@ PROTO FourDofScaraRobot [
 - **endChildren**: 添加末端坐标子节点.
 - **controller**: 添加机器人控制器程序.
 
-###### FourDofScaraRobot1
-- Robodyno的四自由度Scara机器人(构型二).
+###### FourDofScaraRobot3
+- Robodyno的四自由度Scara机器人(构型三).
 - 源自[Robot](https://cyberbotics.com/doc/reference/robot).
 
-![FourDofScaraRobot1](./robots/icons/FourDofScaraRobot1.png)
+![FourDofScaraRobot3](./robots/icons/FourDofScaraRobot3.png)
 
 ```
-PROTO FourDofScaraRobot1 [
+PROTO FourDofScaraRobot3 [
   field SFVec3f    translation 0 0 0
   field SFRotation rotation 0 0 1 0
   field SFString   name "FourDofScaraRobot1"
@@ -371,14 +403,14 @@ PROTO FourDofScaraRobot1 [
 - **endChildren**: 添加末端坐标子节点.
 - **controller**: 添加机器人控制器程序.
 
-###### FourDofScaraRobot2
-- Robodyno的四自由度Scara机器人(构型三).
+###### FourDofScaraRobot4
+- Robodyno的四自由度Scara机器人(构型四).
 - 源自[Robot](https://cyberbotics.com/doc/reference/robot).
 
-![FourDofScaraRobot2](./robots/icons/FourDofScaraRobot2.png)
+![FourDofScaraRobot4](./robots/icons/FourDofScaraRobot4.png)
 
 ```
-PROTO FourDofScaraRobot2 [
+PROTO FourDofScaraRobot4 [
   field SFVec3f    translation 0 0 0
   field SFRotation rotation 0 0 1 0
   field SFString   name "FourDofScaraRobot2"
@@ -604,6 +636,6 @@ PROTO DrawingBoard [
 - **locked**: 定义绘图板的锁定.
 - **castShadows**: 定义绘图板的阴影.
 
-### 示例
+### 使用示例
 
-所有的示例存放在 `机械臂` 目录下，可以通过 Webots 的 `File -> Open World` 菜单打开。示例中包含了一些典型的机械臂模型，每个模型都绑定了一个简单的控制器，可以通过指定关节的目标位置来控制机械臂的运动。控制器的源代码存放在 `controllers` 目录下。
+[Robodyno的Webots仿真课程](https://www.bilibili.com/video/BV1qnEJzLEwB/?spm_id_from=333.1387.homepage.video_card.click&vd_source=5d111a2296ade8301d17e5b4d6b79043)

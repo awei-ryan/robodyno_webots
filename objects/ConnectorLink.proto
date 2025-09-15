@@ -1,0 +1,58 @@
+#VRML_SIM R2023b utf8
+# SCARA机械臂的折弯连接件.
+# license: Creative Commons Attribution 4.0 International License.
+# license url: https://creativecommons.org/licenses/by/4.0/legalcode
+
+PROTO ConnectorLink [
+  field SFVec3f translation 0 0 0
+  field SFRotation rotation 0 0 1 0
+  field SFString name "ConnectorLink"
+  field SFBool     castShadows FALSE            
+]
+{
+  Solid {
+    translation IS translation
+    rotation IS rotation
+    name IS name
+    children [
+      Pose {
+        rotation 0 0 1 1.5708
+        children [
+          CadShape {
+            url [
+              "./shapes/ConnectionCover.dae"
+            ]
+            castShadows IS castShadows
+          }
+        ]
+      }
+      Pose {
+        rotation 1 0 0 0
+        children [
+          CadShape {
+            url [
+              "./shapes/ConnectionFrame.dae"
+            ]
+            castShadows IS castShadows
+          }
+        ]
+      }
+    ]
+    boundingObject Group {
+      children [
+        Pose {
+          translation 0 0 -0.0275
+          children [
+            Box {
+              size 0.08 0.08 0.065
+            }
+          ]
+        }
+      ]
+    }
+    physics Physics {
+      density -1
+      mass 0.05
+    }
+  }
+}

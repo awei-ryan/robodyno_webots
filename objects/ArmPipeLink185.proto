@@ -1,0 +1,127 @@
+#VRML_SIM R2023b utf8
+# 机械臂的臂管连接件.
+# 长度：185mm.
+# license: Creative Commons Attribution 4.0 International License.
+# license url: https://creativecommons.org/licenses/by/4.0/legalcode
+
+PROTO ArmPipeLink185 [
+  field SFVec3f translation 0 0 0
+  field SFRotation rotation 0 0 1 0
+  field SFString name "ArmPipeLink185"
+  field SFBool     castShadows FALSE            
+]
+{
+  Solid {
+    translation IS translation
+    rotation IS rotation
+    name IS name
+    children [
+      Pose {
+        translation 0.185 0 0.035
+        rotation -0.7071067811862364 -0.7071067811862364 9.381857096790023e-07 3.14159
+        children [
+          CadShape {
+            url [
+              "./shapes/ArmPipeStentCover.dae"
+            ]
+            castShadows IS castShadows
+          }
+        ]
+      }
+      Pose {
+        translation 0 0 0.015
+        rotation 1 0 0 -1.5707953071795862
+        children [
+            CadShape {
+              url [
+                  "./shapes/ArmPipeCover.dae"
+              ]
+              castShadows IS castShadows
+            }
+        ]
+      }
+      Pose {
+        translation 0.185 0 0.015
+        rotation 0 0.7071067811865475 -0.7071067811865475 3.14159
+        children [
+            CadShape {
+              url [
+                  "./shapes/ArmPipeCover.dae"
+              ]
+              castShadows IS castShadows
+            }
+        ]
+      }
+      Pose {
+        children [
+            CadShape {
+              url [
+                  "./shapes/ArmPipeLink185.dae"
+              ]
+              castShadows IS castShadows
+            }
+        ]
+      }
+      Transform {
+        translation -0.0007 0 0.028
+        rotation 0 0 1 -1.5707953071795862
+        scale 0.77 0.77 1
+        children [
+            CadShape {
+              url [
+                  "./shapes/LogoYangke.dae"
+              ]
+              castShadows IS castShadows
+            }
+        ]
+      }
+      Transform {
+        translation 0 0 0.028
+        rotation 0 0 1 -1.5707953071795862
+        scale 0.77 0.77 1
+        children [
+            CadShape {
+              url [
+                  "./shapes/LogoYinke.dae"
+              ]
+              castShadows IS castShadows
+            }
+        ]
+      }
+    ]
+    boundingObject Group {
+      children [
+        Pose {
+            translation -0.005 0 0.015
+            children [
+            Cylinder {
+                height 0.03
+                radius 0.03
+            }
+            ]
+        }
+        Pose {
+            translation 0.188 0 0.015
+            children [
+            Cylinder {
+                height 0.03
+                radius 0.03
+            }
+            ]
+        }
+        Pose {
+            translation 0.0695 0 0.015
+            children [
+            Box {
+                size 0.175 0.06 0.03
+            }
+          ]
+        }
+      ]
+    }
+    physics Physics {
+      density -1
+      mass 0.2
+    }
+  }
+}
